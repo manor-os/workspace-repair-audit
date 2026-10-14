@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "inspected_on_local_date": "2026-10-14",
+  "mode": "read-only static source inspection",
+  "repository_root": "Local checkout; absolute local path omitted from release.",
+  "repository_head": "3e08e0a0146764791a27e068fd0ebf0d27a60c75",
+  "head_is_not_full_working_tree_identity": true,
+  "source_modified": false,
+  "app_or_models_run": false,
+  "integration_implemented": false,
+  "production_deployment_verified": false,
+  "review_scope": "Selected artifact, version, Knowledge, memory and task-acceptance contracts; no exhaustive code or live-state review.",
+  "sources": [
+    {
+      "path": "packages/core/models/document_version.py",
+      "sha256": "c49b485e8bd87ca23cd798031d1d4739072e48a20feb8919f479ba1004e69d14",
+      "line_start": 14,
+      "line_end": 41,
+      "selected_lines_sha256": "3cabe6e1143603a5b6b659c17f2715d3bfe16503377ddbac0f9582c9ced789cb",
+      "observed": "DocumentVersion stores document/version IDs, snapshot key, content SHA256, workspace ID and JSON provenance.",
+      "proposed_integration_or_limit": "Potential immutable version/provenance anchor; a JSON field does not itself guarantee complete or faithful dependency lineage."
+    },
+    {
+      "path": "packages/core/models/document.py",
+      "sha256": "9367795771da07ceac70f25114b8d2acfe37b6931d98aa8f33292d568424d45d",
+      "line_start": 41,
+      "line_end": 104,
+      "selected_lines_sha256": "70050a58ffd9ad49e5344dd79e1b5dae58ae3130f83ef573a1600abae827d911",
+      "observed": "Document has stable entity-scoped identity, metadata, storage path, trash state and visibility/classification fields.",
+      "proposed_integration_or_limit": "Artifact dependency records must bind the actual version hash and respect access scope; origin metadata is not semantic dependence."
+    },
+    {
+      "path": "packages/core/services/version_service.py",
+      "sha256": "ce2674f39b50293697198b823530959b9bc84702348ded40cc646f587d98c268",
+      "line_start": 103,
+      "line_end": 240,
+      "selected_lines_sha256": "73b29e8afecc06c49da4040b1af4c670d8fa258de713be1ada67498b06a9d268",
+      "observed": "Snapshot helper copies through entity file handles and hashes stored bytes; create_version creates immutable-path snapshots under a mutation lock.",
+      "proposed_integration_or_limit": "Candidate capture boundary for source/output versions. The inspected ordinary constructor does not populate semantic provenance."
+    },
+    {
+      "path": "packages/core/services/document_metadata.py",
+      "sha256": "8653f3d2bd6b96750e3424140aca9a178f065c4d46b74b072974784ea52223b9",
+      "line_start": 14,
+      "line_end": 98,
+      "selected_lines_sha256": "7a0199f506a2e36fd217eb8b385cfe09d80f6e8047c14367d0afd3a3d471f061",
+      "observed": "Structured metadata schema has origin, artifact, generation and external sections.",
+      "proposed_integration_or_limit": "An adapter could add versioned lineage schema without confusing contextual origin with causal evidence."
+    },
+    {
+      "path": "packages/core/services/knowledge_sync.py",
+      "sha256": "ee3e85c22bc9bcc8a4aa90f7f8a97defa2b2d24982fc9566c7e55949488a774a",
+      "line_start": 682,
+      "line_end": 768,
+      "selected_lines_sha256": "59a1cd4206bc2aac8e048e6e8864bc1326c13cd5c4386507009dd0b5c9e508b6",
+      "observed": "bind_document_to_workspace records produced/used workspace and task/agent/tool context; Knowledge membership is separate.",
+      "proposed_integration_or_limit": "Useful runtime origin, not complete source-to-output lineage. Audit gates must not grant membership or permissions."
+    },
+    {
+      "path": "packages/core/services/artifact_knowledge.py",
+      "sha256": "e0ecb8b1906946c363b0e68cc36bf235eec493a6ab4d95ca6ef027851bd1ca4f",
+      "line_start": 128,
+      "line_end": 248,
+      "selected_lines_sha256": "074236eafd79a3f33a7229175f78316f2eb28f5381533f9cb591154100182eec",
+      "observed": "ArtifactDocumentResolver binds or synchronizes generated local artifacts into canonical Document identities.",
+      "proposed_integration_or_limit": "Potential producer-side hook for sidecar dependency manifests; observed input reads still need separate instrumentation."
+    },
+    {
+      "path": "packages/core/services/artifact_delivery.py",
+      "sha256": "36f39abdb4143cc1995c6fccbe1c56f58ca01a51e15cbc51d951773b56d53c0b",
+      "line_start": 477,
+      "line_end": 609,
+      "selected_lines_sha256": "8f6b8796d018162ac08d066f4ba47830e755cb1004e82280203d2c0061491521",
+      "observed": "Delivery verifier checks exact identities, current read access, pinned byte hashes and revision stability before/after I/O.",
+      "proposed_integration_or_limit": "Potential version-bound gate input. A missing-dependency audit should supplement this boundary and preserve its file/ACL checks."
+    },
+    {
+      "path": "packages/core/services/task_acceptance_review.py",
+      "sha256": "77cea88009e839b8e9178f1047f0b9c9220f8a1de5871b401fc2af207c40f5b1",
+      "line_start": 513,
+      "line_end": 677,
+      "selected_lines_sha256": "9f12b056c0acfd0a24353126503abbb5679ceedee06d026ac7ad86d2972eac48",
+      "observed": "Task acceptance snapshot includes task/plan/steps, declared artifact manifest, verified hashes and bounded content. It distinguishes semantic acceptance from file identity.",
+      "proposed_integration_or_limit": "Potential application point for a frozen repair/audit decision bound to exact task, plan, source/output version hashes. Content truncation must not be mistaken for full semantic verification."
+    },
+    {
+      "path": "packages/core/dispatcher/service.py",
+      "sha256": "10820a3535eb7c928154c1144d15b915b068dfd84d9047c9b105b7d5a45f6c3c",
+      "line_start": 2599,
+      "line_end": 2694,
+      "selected_lines_sha256": "c71ab9b2a7ea52891a85a0c9b1e198eba1166f8c2a739bcfbc26a290b38bd4be",
+      "observed": "Step completion verifies reused artifacts or projects producer artifacts into Knowledge under the dispatcher path.",
+      "proposed_integration_or_limit": "Possible completion-time capture boundary; automatic source invalidation and cascade repair were not established by this inspection."
+    },
+    {
+      "path": "packages/core/models/memory.py",
+      "sha256": "d7f0e86b3b20da3937df231cf36bccdbd5efabdedca878164c0f12c113f2939d",
+      "line_start": 27,
+      "line_end": 81,
+      "selected_lines_sha256": "5651dec2e05908d455790e7e492583d9257f4cbad1a2b433f1648c3cf68841ad",
+      "observed": "AgentMemory distinguishes workspace/agent scope; stores content, confidence, source, metadata, expiry and status.",
+      "proposed_integration_or_limit": "Possible linked-memory state; no dedicated complete influence graph is established by these fields."
+    },
+    {
+      "path": "packages/core/services/memory_service.py",
+      "sha256": "c7040ca1f32f98295a8cfa41df12df46aebd4de2dc3ce5ae13b779dc46053033",
+      "line_start": 82,
+      "line_end": 121,
+      "selected_lines_sha256": "ab8f38f5727a4075f3eb9e1908463dbaf87ca4df11f6a732167890cd8815f67f",
+      "observed": "Memory insertion adds content fingerprint, source/metadata, status and per-entity/agent/user scope.",
+      "proposed_integration_or_limit": "Fingerprint is dedup/content identity, not full semantic ancestry."
+    },
+    {
+      "path": "packages/core/ai/runtime/memory.py",
+      "sha256": "b3b298f034237d3add2c982e5bbf0bb756cc5392da4ea7dd9f5c1431574cf573",
+      "line_start": 24,
+      "line_end": 110,
+      "selected_lines_sha256": "8717f2ac3158419f862caf99dd51cfb71b71f7a5f979e86009b17eefb2d211eb",
+      "observed": "Runtime memory mounts carry scope, read/write flags and metadata; insight extraction asks for source message IDs.",
+      "proposed_integration_or_limit": "Source message IDs can support origin tracking but do not cover all downstream artifact dependencies."
+    },
+    {
+      "path": "packages/core/memory/manager.py",
+      "sha256": "9fa2a25a2570e0970ad5821d597657cdf1a23d1d0af8aced27100f12629efdc0",
+      "line_start": 60,
+      "line_end": 110,
+      "selected_lines_sha256": "fdaab7b2e9da141e03dbb99449f1a79716fb0f5c4bbb886aac7196f5fce14f27",
+      "observed": "Extraction validation checks emitted source message IDs belong to the input allowlist.",
+      "proposed_integration_or_limit": "Useful source admission check; this does not establish semantic entailment or cascade repair."
+    }
+  ],
+  "proposed_adapter_contract": {
+    "status": "design only",
+    "versioned_node": [
+      "entity_id",
+      "workspace_id",
+      "document_id_or_memory_id",
+      "version_id",
+      "content_sha256"
+    ],
+    "dependency_edge": [
+      "source_version",
+      "output_version",
+      "edge_kind",
+      "evidence_origin",
+      "observation_or_inference",
+      "extractor_version"
+    ],
+    "gate_inputs": [
+      "frozen candidate set",
+      "excluded pool definition",
+      "audit rule and sample seed",
+      "validated labels",
+      "task/plan identity",
+      "source and output version hashes"
+    ],
+    "gate_invalidation": [
+      "any changed bound artifact/source version",
+      "changed candidate population",
+      "expired or changed access policy",
+      "new source update before completion"
+    ],
+    "semantic_limit": "Statistical counts over validated labels do not establish label correctness or semantic repair correctness."
+  },
+  "not_established": [
+    "Complete observed source-to-output influence lineage",
+    "Automatic discovery of missing dependencies",
+    "Workspace-wide source-change invalidation and repair",
+    "Preservation of valid human edits during automatic patching",
+    "Publication or delivery gate using finite-population dependency audits"
+  ],
+  "public_package_boundary": "This report includes paths, hashes and paraphrased findings only; it does not grant permission to copy or release private Manor implementation code.",
+  "public_project_reference": "https://github.com/manor-os/manor-ai"
+}

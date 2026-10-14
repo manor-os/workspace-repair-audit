@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.log
+*.aux
+*.out
+*.synctex.gz
+figures/mpl_cache/
+results_reproduction/
+data_reproduction/
+example_reproduction/

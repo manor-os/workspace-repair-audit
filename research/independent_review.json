@@ -1,0 +1,124 @@
+{
+  "disposition": "No substantive correctness blocker for an accurately labeled synthetic v0.1 research preprint; native PDF compilation and visual layout remain the release owner responsibility.",
+  "exact_actual_design_enumeration": {
+    "N": 52,
+    "allowed_residual": 6,
+    "both_at_most_delta": true,
+    "delta": "1/20",
+    "enumerated_stale_totals": 53,
+    "feasible_K_k_outcomes": 725,
+    "gate_pass_positive_counts": [
+      0,
+      1
+    ],
+    "maximum_bound_undercoverage_K": 18,
+    "maximum_bound_undercoverage_decimal": 0.04926953307252845,
+    "maximum_bound_undercoverage_fraction": "5286867/107304995",
+    "maximum_unsafe_release_K": 8,
+    "maximum_unsafe_release_decimal": 0.04189165027713213,
+    "maximum_unsafe_release_fraction": "2343/55930",
+    "monte_carlo_used": false,
+    "n": 24,
+    "zero_positive_upper_total": 4
+  },
+  "gold_label_boundary": {
+    "all_label_queries_charged": true,
+    "boundary_is_security_sandbox": false,
+    "direct_gold_access_found_in_policy_code": false,
+    "remarks": "Selectors use public text/citations and the charged validator. Synthetic title/provenance coupling is declared. Natural pilot public inputs contain authored English contracts, while expression DAGs and impact labels are evaluator-only. Oracle unit-test responses validate the scorer, not model performance."
+  },
+  "limits": [
+    "Main experiment uses exact reference labels and isolated in-memory generated-block patches; not autonomous cross-file semantic editing.",
+    "No new exact statistical theorem, complete-system baseline reproduction or AI method superiority established.",
+    "Four edge-rate variants share each base; 1440 condition instances are not 1440 independent business tasks. All families use a common authored generator.",
+    "Validation-call counts exclude ranking, graph construction, reference computation and production infrastructure overhead; no token, money or latency inference.",
+    "Human notes are structurally protected by the numeric/generated-block patch API, not semantically reconciled.",
+    "Snapshot guard checks a supplied token against a stored token; live mutation detection, concurrency control and production deployment are not demonstrated.",
+    "The confidence statement concerns conceptual uniform audit randomization for a fixed population; fixed seeded runs are not a Monte Carlo coverage study and do not provide a 95% conditional gate-pass guarantee.",
+    "A tolerance of six stale claims is an authored demonstration setting, not validated business acceptability.",
+    "Natural-language pilot has six passing offline tests and frozen inputs; no successful model experiment. BYOK 502 feasibility failure is not a model-performance result.",
+    "Selected prior-work descriptions and upstream model-route status were read from research records, not independently re-fetched in this review.",
+    "Native compiler and final PDF visual verification are outside this reviewer pass."
+  ],
+  "offline_tests": {
+    "benchmark_tests": 13,
+    "command": "python3 -B -m unittest discover -s code -p 'test_*.py' -v",
+    "external_model_calls_by_reviewer": 0,
+    "natural_pilot_tests": 6,
+    "passed": true,
+    "total": 19
+  },
+  "primary_result_interpretation": {
+    "overall_all_current_dominated_by_full_scan_fallback": true,
+    "overall_all_current_fraction": 0.9069444444444444,
+    "unsafe_release_denominators": [
+      "6/1440 of all paired condition instances",
+      "6/253 of gate-passed instances"
+    ],
+    "validation_call_saving_vs_full_inspection": 0.07686631944444444
+  },
+  "raw_result_counts": {
+    "base_workspaces": 360,
+    "case_method_executions": 11520,
+    "confidence_undercoverage_events": 34,
+    "fallbacks": 1187,
+    "gate_passes": 253,
+    "passed_all_current": 119,
+    "passed_with_residual": 134,
+    "unsafe_gate_releases": 6,
+    "workspace_condition_instances": 1440
+  },
+  "replay_file_comparisons": {
+    "detailed_results.jsonl.gz": true,
+    "exact_coverage_sanity.json": true,
+    "result_manifest.json": true,
+    "results.csv": true,
+    "summary.json": true
+  },
+  "resolved_review_findings": [
+    {
+      "finding": "The 95% bound is not conditional on gate pass and is not simultaneous corpus coverage.",
+      "severity": "material interpretation",
+      "status": "Explicit pass-conditional warning and fixed-realization caveat present in manuscript Results."
+    },
+    {
+      "finding": "Report six unsafe releases, 34 bound failures, modest 7.69% call saving, fallback dominance and distinct denominators.",
+      "severity": "material interpretation",
+      "status": "Accurately reported in completed Results."
+    },
+    {
+      "finding": "Figure x values are deletion probabilities rather than measured missing-edge percentages.",
+      "severity": "minor terminology",
+      "status": "Axis renamed to true-edge deletion probability by release owner."
+    }
+  ],
+  "review_type": "Code, statistical implementation, raw-result, manuscript-scope and PNG-figure review; not peer review or production certification",
+  "reviewed_file_sha256": {
+    "Manor_AI_Paper_2.tex": "42adca807436d7b9eedc62f7bdf7ad0a093c6cd2af3bfcd46b5775b337241b60",
+    "code/benchmark.py": "ecfdcb0821085fd583f1593086340a7728c4f6d30a2be482cd67601f181f27bd",
+    "code/make_figures.py": "a5b763ec23a6fa9c429988d2f03aa19cdd58df61344a662c9af3073ebae259ac",
+    "code/natural_pilot.py": "17e8610e0e1ae2daf487c0a1424f6b184c7ce3ecfec0fb3ad603152225a5364e",
+    "code/test_benchmark.py": "5e0c4c82774c42bce4b8cc3bbfe6802da8db74b278e0b522efea0c6694f2b6ff",
+    "code/test_natural_pilot.py": "72e259c8195c35008195357c32751f6ce3620bf7e1fe698e618fa2c21a86cd13",
+    "code/update_manuscript_results.py": "ef5bdf67848d04ccc3804c8f5a0a0f7024e2296d24dea68e17d9f99b96bbcfa3",
+    "data/cases.jsonl": "f78534e49652ea7575d65205399bbbeb3f7b27fd4a123b15398eaf4e0c69929f",
+    "data/freeze_manifest.json": "ff8386cd79cb315aa806010b4f215a005cf5328a812e94ee89ec7e4b12a9e125",
+    "data/protocol.json": "81350e6f9b09a4681544e1f5e64dd4b4a31eae3d2e27050b0ac085e5bd2fa521",
+    "results_primary/detailed_results.jsonl.gz": "4d1076381cda868bedf68ba90194fb13089b7580233e2e9514a890a08fc18c3b",
+    "results_primary/exact_coverage_sanity.json": "760c4b658f70dd157c967f2e230e0be37f2fac82627bbe767bd4b52b56cb5ff5",
+    "results_primary/result_manifest.json": "61a6c91e4d3a839c1db0947922c1ab86cbdde4e19ea398f2a7609741e65a5889",
+    "results_primary/results.csv": "ee234ec54e99d63a60b166d426c55689a49d04c4627961b2b2cb42d2fd9476f0",
+    "results_primary/summary.json": "c138ac63345de66faceafcbd866d78b6f905b11423a79fbb156aeb230766fbc7"
+  },
+  "reviewed_local_date": "2026-10-14",
+  "reviewer": "Independent automated reviewer /root/paper2_independent_review",
+  "schema_version": 1,
+  "verified_checks": {
+    "all_trace_call_counts_match": true,
+    "code_matches_freeze_manifest": true,
+    "patch_count_matches_trace": true,
+    "primary_replay_files_byte_identical": true,
+    "result_manifest_hashes_match": true,
+    "unique_case_method_pairs": true
+  }
+}

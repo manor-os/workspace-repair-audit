@@ -1,0 +1,15 @@
+{
+  "local_environment_running": true,
+  "existing_owner_account_found": true,
+  "configured_byok_verified": true,
+  "configured_model": "gpt-6.1-sol",
+  "model_route_smoke_attempts": 2,
+  "successful_model_calls": 0,
+  "benchmark_model_calls": 0,
+  "diagnostic_retry_error_code": "byok_provider_error",
+  "diagnostic_retry_http_status": 502,
+  "first_attempt_error_details_not_retained": true,
+  "platform_fallback_attempted": false,
+  "alternative_model_preference_pending": true,
+  "account_identifiers_or_credentials_included": false
+}

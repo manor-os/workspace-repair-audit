@@ -1,0 +1,2651 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "case_id": "budget_01",
+      "domain": "budget",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 8000
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 16
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 4
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 350
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 12000
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 16
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 4
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 350
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Allocated budget [C01] repeats the campaign budget [F1].",
+          "Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].",
+          "Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.",
+          "Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].",
+          "Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].",
+          "Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].",
+          "Reserve fund [C07] is one tenth of allocated budget [C01].",
+          "Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].",
+          "Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.",
+          "Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].",
+          "Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].",
+          "Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Allocated budget\nThe current allocated budget is **8000**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nExpected leads,500\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Expected customers\", \"value\": \"20\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Gross revenue\nThe current gross revenue is **7000**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nContribution,-1000\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Revenue multiple\", \"value\": \"0.875\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve fund\nThe current reserve fund is **800**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nWorking budget,7200\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative customers\", \"value\": \"18\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative revenue\nThe current conservative revenue is **6300**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative profit,-900\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Viable flag\", \"value\": \"0\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 1: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Allocated budget\\nThe current allocated budget is **8000**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nExpected leads,500\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Expected customers\\\", \\\"value\\\": \\\"20\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Gross revenue\\nThe current gross revenue is **7000**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nContribution,-1000\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Revenue multiple\\\", \\\"value\\\": \\\"0.875\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve fund\\nThe current reserve fund is **800**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nWorking budget,7200\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative customers\\\", \\\"value\\\": \\\"18\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative revenue\\nThe current conservative revenue is **6300**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative profit,-900\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Viable flag\\\", \\\"value\\\": \\\"0\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"campaign budget in USD\", \"value\": 8000}, {\"id\": \"F2\", \"name\": \"cost per lead in USD\", \"value\": 16}, {\"id\": \"F3\", \"name\": \"lead-to-customer conversion percent\", \"value\": 4}, {\"id\": \"F4\", \"name\": \"revenue per customer in USD\", \"value\": 350}], \"case_id\": \"budget_01\", \"domain\": \"budget\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 1: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Allocated budget [C01] repeats the campaign budget [F1].\", \"Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].\", \"Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.\", \"Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].\", \"Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].\", \"Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].\", \"Reserve fund [C07] is one tenth of allocated budget [C01].\", \"Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].\", \"Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.\", \"Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].\", \"Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].\", \"Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "budget_02",
+      "domain": "budget",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 9400
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 18
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 5
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 425
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 9400
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 24
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 5
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 425
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Allocated budget [C01] repeats the campaign budget [F1].",
+          "Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].",
+          "Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.",
+          "Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].",
+          "Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].",
+          "Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].",
+          "Reserve fund [C07] is one tenth of allocated budget [C01].",
+          "Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].",
+          "Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.",
+          "Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].",
+          "Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].",
+          "Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Allocated budget\nThe current allocated budget is **9400**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nExpected leads,522.22222222\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Expected customers\", \"value\": \"26.11111111\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Gross revenue\nThe current gross revenue is **11097.22222222**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nContribution,1697.22222222\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Revenue multiple\", \"value\": \"1.18055556\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve fund\nThe current reserve fund is **940**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nWorking budget,8460\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative customers\", \"value\": \"23\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative revenue\nThe current conservative revenue is **9775**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative profit,1315\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Viable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 2: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Allocated budget\\nThe current allocated budget is **9400**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nExpected leads,522.22222222\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Expected customers\\\", \\\"value\\\": \\\"26.11111111\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Gross revenue\\nThe current gross revenue is **11097.22222222**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nContribution,1697.22222222\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Revenue multiple\\\", \\\"value\\\": \\\"1.18055556\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve fund\\nThe current reserve fund is **940**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nWorking budget,8460\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative customers\\\", \\\"value\\\": \\\"23\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative revenue\\nThe current conservative revenue is **9775**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative profit,1315\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Viable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"campaign budget in USD\", \"value\": 9400}, {\"id\": \"F2\", \"name\": \"cost per lead in USD\", \"value\": 18}, {\"id\": \"F3\", \"name\": \"lead-to-customer conversion percent\", \"value\": 5}, {\"id\": \"F4\", \"name\": \"revenue per customer in USD\", \"value\": 425}], \"case_id\": \"budget_02\", \"domain\": \"budget\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 2: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Allocated budget [C01] repeats the campaign budget [F1].\", \"Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].\", \"Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.\", \"Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].\", \"Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].\", \"Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].\", \"Reserve fund [C07] is one tenth of allocated budget [C01].\", \"Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].\", \"Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.\", \"Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].\", \"Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].\", \"Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "budget_03",
+      "domain": "budget",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 10800
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 20
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 6
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 500
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 10800
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 20
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 9
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 500
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Allocated budget [C01] repeats the campaign budget [F1].",
+          "Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].",
+          "Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.",
+          "Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].",
+          "Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].",
+          "Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].",
+          "Reserve fund [C07] is one tenth of allocated budget [C01].",
+          "Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].",
+          "Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.",
+          "Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].",
+          "Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].",
+          "Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Allocated budget\nThe current allocated budget is **10800**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nExpected leads,540\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Expected customers\", \"value\": \"32.4\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Gross revenue\nThe current gross revenue is **16200**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nContribution,5400\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Revenue multiple\", \"value\": \"1.5\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve fund\nThe current reserve fund is **1080**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nWorking budget,9720\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative customers\", \"value\": \"29\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative revenue\nThe current conservative revenue is **14500**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative profit,4780\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Viable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 3: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Allocated budget\\nThe current allocated budget is **10800**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nExpected leads,540\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Expected customers\\\", \\\"value\\\": \\\"32.4\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Gross revenue\\nThe current gross revenue is **16200**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nContribution,5400\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Revenue multiple\\\", \\\"value\\\": \\\"1.5\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve fund\\nThe current reserve fund is **1080**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nWorking budget,9720\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative customers\\\", \\\"value\\\": \\\"29\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative revenue\\nThe current conservative revenue is **14500**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative profit,4780\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Viable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"campaign budget in USD\", \"value\": 10800}, {\"id\": \"F2\", \"name\": \"cost per lead in USD\", \"value\": 20}, {\"id\": \"F3\", \"name\": \"lead-to-customer conversion percent\", \"value\": 6}, {\"id\": \"F4\", \"name\": \"revenue per customer in USD\", \"value\": 500}], \"case_id\": \"budget_03\", \"domain\": \"budget\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 3: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Allocated budget [C01] repeats the campaign budget [F1].\", \"Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].\", \"Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.\", \"Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].\", \"Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].\", \"Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].\", \"Reserve fund [C07] is one tenth of allocated budget [C01].\", \"Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].\", \"Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.\", \"Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].\", \"Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].\", \"Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "budget_04",
+      "domain": "budget",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 12200
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 22
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 7
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 575
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 12200
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 22
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 7
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 766
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Allocated budget [C01] repeats the campaign budget [F1].",
+          "Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].",
+          "Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.",
+          "Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].",
+          "Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].",
+          "Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].",
+          "Reserve fund [C07] is one tenth of allocated budget [C01].",
+          "Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].",
+          "Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.",
+          "Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].",
+          "Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].",
+          "Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Allocated budget\nThe current allocated budget is **12200**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nExpected leads,554.54545455\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Expected customers\", \"value\": \"38.81818182\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Gross revenue\nThe current gross revenue is **22320.45454545**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nContribution,10120.45454545\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Revenue multiple\", \"value\": \"1.82954545\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve fund\nThe current reserve fund is **1220**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nWorking budget,10980\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative customers\", \"value\": \"34\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative revenue\nThe current conservative revenue is **19550**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative profit,8570\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Viable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 4: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Allocated budget\\nThe current allocated budget is **12200**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nExpected leads,554.54545455\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Expected customers\\\", \\\"value\\\": \\\"38.81818182\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Gross revenue\\nThe current gross revenue is **22320.45454545**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nContribution,10120.45454545\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Revenue multiple\\\", \\\"value\\\": \\\"1.82954545\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve fund\\nThe current reserve fund is **1220**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nWorking budget,10980\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative customers\\\", \\\"value\\\": \\\"34\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative revenue\\nThe current conservative revenue is **19550**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative profit,8570\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Viable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"campaign budget in USD\", \"value\": 12200}, {\"id\": \"F2\", \"name\": \"cost per lead in USD\", \"value\": 22}, {\"id\": \"F3\", \"name\": \"lead-to-customer conversion percent\", \"value\": 7}, {\"id\": \"F4\", \"name\": \"revenue per customer in USD\", \"value\": 575}], \"case_id\": \"budget_04\", \"domain\": \"budget\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 4: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Allocated budget [C01] repeats the campaign budget [F1].\", \"Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].\", \"Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.\", \"Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].\", \"Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].\", \"Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].\", \"Reserve fund [C07] is one tenth of allocated budget [C01].\", \"Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].\", \"Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.\", \"Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].\", \"Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].\", \"Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "budget_05",
+      "domain": "budget",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 13600
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 24
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 8
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 650
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 20400
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 24
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 8
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 650
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Allocated budget [C01] repeats the campaign budget [F1].",
+          "Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].",
+          "Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.",
+          "Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].",
+          "Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].",
+          "Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].",
+          "Reserve fund [C07] is one tenth of allocated budget [C01].",
+          "Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].",
+          "Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.",
+          "Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].",
+          "Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].",
+          "Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Allocated budget\nThe current allocated budget is **13600**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nExpected leads,566.66666667\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Expected customers\", \"value\": \"45.33333333\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Gross revenue\nThe current gross revenue is **29466.66666667**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nContribution,15866.66666667\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Revenue multiple\", \"value\": \"2.16666667\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve fund\nThe current reserve fund is **1360**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nWorking budget,12240\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative customers\", \"value\": \"40\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative revenue\nThe current conservative revenue is **26000**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative profit,13760\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Viable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 5: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Allocated budget\\nThe current allocated budget is **13600**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nExpected leads,566.66666667\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Expected customers\\\", \\\"value\\\": \\\"45.33333333\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Gross revenue\\nThe current gross revenue is **29466.66666667**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nContribution,15866.66666667\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Revenue multiple\\\", \\\"value\\\": \\\"2.16666667\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve fund\\nThe current reserve fund is **1360**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nWorking budget,12240\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative customers\\\", \\\"value\\\": \\\"40\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative revenue\\nThe current conservative revenue is **26000**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative profit,13760\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Viable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"campaign budget in USD\", \"value\": 13600}, {\"id\": \"F2\", \"name\": \"cost per lead in USD\", \"value\": 24}, {\"id\": \"F3\", \"name\": \"lead-to-customer conversion percent\", \"value\": 8}, {\"id\": \"F4\", \"name\": \"revenue per customer in USD\", \"value\": 650}], \"case_id\": \"budget_05\", \"domain\": \"budget\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 5: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Allocated budget [C01] repeats the campaign budget [F1].\", \"Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].\", \"Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.\", \"Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].\", \"Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].\", \"Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].\", \"Reserve fund [C07] is one tenth of allocated budget [C01].\", \"Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].\", \"Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.\", \"Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].\", \"Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].\", \"Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "budget_06",
+      "domain": "budget",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 15000
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 26
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 9
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 725
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "campaign budget in USD",
+          "value": 15000
+        },
+        {
+          "id": "F2",
+          "name": "cost per lead in USD",
+          "value": 34
+        },
+        {
+          "id": "F3",
+          "name": "lead-to-customer conversion percent",
+          "value": 9
+        },
+        {
+          "id": "F4",
+          "name": "revenue per customer in USD",
+          "value": 725
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Allocated budget [C01] repeats the campaign budget [F1].",
+          "Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].",
+          "Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.",
+          "Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].",
+          "Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].",
+          "Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].",
+          "Reserve fund [C07] is one tenth of allocated budget [C01].",
+          "Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].",
+          "Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.",
+          "Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].",
+          "Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].",
+          "Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Allocated budget\nThe current allocated budget is **15000**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nExpected leads,576.92307692\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Expected customers\", \"value\": \"51.92307692\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Gross revenue\nThe current gross revenue is **37644.23076923**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nContribution,22644.23076923\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Revenue multiple\", \"value\": \"2.50961538\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve fund\nThe current reserve fund is **1500**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nWorking budget,13500\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative customers\", \"value\": \"46\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative revenue\nThe current conservative revenue is **33350**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative profit,19850\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Viable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 6: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Allocated budget\\nThe current allocated budget is **15000**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nExpected leads,576.92307692\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Expected customers\\\", \\\"value\\\": \\\"51.92307692\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Gross revenue\\nThe current gross revenue is **37644.23076923**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nContribution,22644.23076923\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Revenue multiple\\\", \\\"value\\\": \\\"2.50961538\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve fund\\nThe current reserve fund is **1500**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nWorking budget,13500\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative customers\\\", \\\"value\\\": \\\"46\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative revenue\\nThe current conservative revenue is **33350**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative profit,19850\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Viable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"campaign budget in USD\", \"value\": 15000}, {\"id\": \"F2\", \"name\": \"cost per lead in USD\", \"value\": 26}, {\"id\": \"F3\", \"name\": \"lead-to-customer conversion percent\", \"value\": 9}, {\"id\": \"F4\", \"name\": \"revenue per customer in USD\", \"value\": 725}], \"case_id\": \"budget_06\", \"domain\": \"budget\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 6: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Allocated budget [C01] repeats the campaign budget [F1].\", \"Expected leads [C02] divides campaign budget [F1] by cost per lead [F2].\", \"Expected customers [C03] multiplies expected leads [C02] by conversion percent [F3] and divides by 100.\", \"Gross revenue [C04] multiplies expected customers [C03] by revenue per customer [F4].\", \"Contribution [C05] subtracts allocated budget [C01] from gross revenue [C04].\", \"Revenue multiple [C06] divides gross revenue [C04] by allocated budget [C01].\", \"Reserve fund [C07] is one tenth of allocated budget [C01].\", \"Working budget [C08] subtracts reserve fund [C07] from allocated budget [C01].\", \"Conservative customers [C09] is working budget [C08] divided by cost per lead [F2], multiplied by conversion percent [F3], divided by 100, then rounded down to a whole number.\", \"Conservative revenue [C10] multiplies conservative customers [C09] by revenue per customer [F4].\", \"Conservative profit [C11] subtracts working budget [C08] from conservative revenue [C10].\", \"Viable flag [C12] is 1 when conservative profit [C11] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "capacity_01",
+      "domain": "capacity",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 120
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 8
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 6
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 650
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 180
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 8
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 6
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 650
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.",
+          "Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].",
+          "Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].",
+          "Idle hours [C04] subtracts used hours [C03] from available hours [F1].",
+          "Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].",
+          "Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.",
+          "Reserve hours [C07] divides available hours [F1] by ten and rounds down.",
+          "Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].",
+          "Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.",
+          "Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].",
+          "Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].",
+          "Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Raw capacity\nThe current raw capacity is **15**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nAccepted engagements,6\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Used hours\", \"value\": \"48\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Idle hours\nThe current idle hours is **72**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nBooked revenue,3900\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Waitlist\", \"value\": \"0\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve hours\nThe current reserve hours is **12**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nProductive hours,108\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative capacity\", \"value\": \"13\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative bookings\nThe current conservative bookings is **6**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative revenue,3900\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Demand covered flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 1: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Raw capacity\\nThe current raw capacity is **15**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nAccepted engagements,6\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Used hours\\\", \\\"value\\\": \\\"48\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Idle hours\\nThe current idle hours is **72**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nBooked revenue,3900\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Waitlist\\\", \\\"value\\\": \\\"0\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve hours\\nThe current reserve hours is **12**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nProductive hours,108\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative capacity\\\", \\\"value\\\": \\\"13\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative bookings\\nThe current conservative bookings is **6**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative revenue,3900\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Demand covered flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"available service hours\", \"value\": 120}, {\"id\": \"F2\", \"name\": \"hours per engagement\", \"value\": 8}, {\"id\": \"F3\", \"name\": \"requested client engagements\", \"value\": 6}, {\"id\": \"F4\", \"name\": \"fee per engagement in USD\", \"value\": 650}], \"case_id\": \"capacity_01\", \"domain\": \"capacity\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 1: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.\", \"Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].\", \"Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].\", \"Idle hours [C04] subtracts used hours [C03] from available hours [F1].\", \"Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].\", \"Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.\", \"Reserve hours [C07] divides available hours [F1] by ten and rounds down.\", \"Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].\", \"Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.\", \"Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].\", \"Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].\", \"Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "capacity_02",
+      "domain": "capacity",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 144
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 9
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 25
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 750
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 144
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 12
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 25
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 750
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.",
+          "Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].",
+          "Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].",
+          "Idle hours [C04] subtracts used hours [C03] from available hours [F1].",
+          "Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].",
+          "Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.",
+          "Reserve hours [C07] divides available hours [F1] by ten and rounds down.",
+          "Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].",
+          "Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.",
+          "Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].",
+          "Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].",
+          "Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Raw capacity\nThe current raw capacity is **16**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nAccepted engagements,16\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Used hours\", \"value\": \"144\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Idle hours\nThe current idle hours is **0**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nBooked revenue,12000\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Waitlist\", \"value\": \"9\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve hours\nThe current reserve hours is **14**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nProductive hours,130\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative capacity\", \"value\": \"14\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative bookings\nThe current conservative bookings is **14**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative revenue,10500\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Demand covered flag\", \"value\": \"0\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 2: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Raw capacity\\nThe current raw capacity is **16**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nAccepted engagements,16\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Used hours\\\", \\\"value\\\": \\\"144\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Idle hours\\nThe current idle hours is **0**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nBooked revenue,12000\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Waitlist\\\", \\\"value\\\": \\\"9\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve hours\\nThe current reserve hours is **14**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nProductive hours,130\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative capacity\\\", \\\"value\\\": \\\"14\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative bookings\\nThe current conservative bookings is **14**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative revenue,10500\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Demand covered flag\\\", \\\"value\\\": \\\"0\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"available service hours\", \"value\": 144}, {\"id\": \"F2\", \"name\": \"hours per engagement\", \"value\": 9}, {\"id\": \"F3\", \"name\": \"requested client engagements\", \"value\": 25}, {\"id\": \"F4\", \"name\": \"fee per engagement in USD\", \"value\": 750}], \"case_id\": \"capacity_02\", \"domain\": \"capacity\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 2: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.\", \"Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].\", \"Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].\", \"Idle hours [C04] subtracts used hours [C03] from available hours [F1].\", \"Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].\", \"Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.\", \"Reserve hours [C07] divides available hours [F1] by ten and rounds down.\", \"Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].\", \"Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.\", \"Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].\", \"Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].\", \"Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "capacity_03",
+      "domain": "capacity",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 168
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 10
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 8
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 850
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 168
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 10
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 12
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 850
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.",
+          "Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].",
+          "Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].",
+          "Idle hours [C04] subtracts used hours [C03] from available hours [F1].",
+          "Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].",
+          "Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.",
+          "Reserve hours [C07] divides available hours [F1] by ten and rounds down.",
+          "Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].",
+          "Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.",
+          "Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].",
+          "Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].",
+          "Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Raw capacity\nThe current raw capacity is **16**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nAccepted engagements,8\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Used hours\", \"value\": \"80\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Idle hours\nThe current idle hours is **88**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nBooked revenue,6800\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Waitlist\", \"value\": \"0\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve hours\nThe current reserve hours is **16**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nProductive hours,152\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative capacity\", \"value\": \"15\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative bookings\nThe current conservative bookings is **8**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative revenue,6800\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Demand covered flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 3: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Raw capacity\\nThe current raw capacity is **16**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nAccepted engagements,8\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Used hours\\\", \\\"value\\\": \\\"80\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Idle hours\\nThe current idle hours is **88**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nBooked revenue,6800\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Waitlist\\\", \\\"value\\\": \\\"0\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve hours\\nThe current reserve hours is **16**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nProductive hours,152\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative capacity\\\", \\\"value\\\": \\\"15\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative bookings\\nThe current conservative bookings is **8**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative revenue,6800\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Demand covered flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"available service hours\", \"value\": 168}, {\"id\": \"F2\", \"name\": \"hours per engagement\", \"value\": 10}, {\"id\": \"F3\", \"name\": \"requested client engagements\", \"value\": 8}, {\"id\": \"F4\", \"name\": \"fee per engagement in USD\", \"value\": 850}], \"case_id\": \"capacity_03\", \"domain\": \"capacity\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 3: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.\", \"Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].\", \"Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].\", \"Idle hours [C04] subtracts used hours [C03] from available hours [F1].\", \"Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].\", \"Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.\", \"Reserve hours [C07] divides available hours [F1] by ten and rounds down.\", \"Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].\", \"Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.\", \"Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].\", \"Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].\", \"Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "capacity_04",
+      "domain": "capacity",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 192
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 11
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 27
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 950
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 192
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 11
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 27
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 1266
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.",
+          "Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].",
+          "Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].",
+          "Idle hours [C04] subtracts used hours [C03] from available hours [F1].",
+          "Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].",
+          "Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.",
+          "Reserve hours [C07] divides available hours [F1] by ten and rounds down.",
+          "Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].",
+          "Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.",
+          "Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].",
+          "Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].",
+          "Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Raw capacity\nThe current raw capacity is **17**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nAccepted engagements,17\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Used hours\", \"value\": \"187\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Idle hours\nThe current idle hours is **5**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nBooked revenue,16150\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Waitlist\", \"value\": \"10\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve hours\nThe current reserve hours is **19**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nProductive hours,173\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative capacity\", \"value\": \"15\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative bookings\nThe current conservative bookings is **15**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative revenue,14250\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Demand covered flag\", \"value\": \"0\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 4: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Raw capacity\\nThe current raw capacity is **17**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nAccepted engagements,17\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Used hours\\\", \\\"value\\\": \\\"187\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Idle hours\\nThe current idle hours is **5**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nBooked revenue,16150\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Waitlist\\\", \\\"value\\\": \\\"10\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve hours\\nThe current reserve hours is **19**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nProductive hours,173\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative capacity\\\", \\\"value\\\": \\\"15\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative bookings\\nThe current conservative bookings is **15**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative revenue,14250\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Demand covered flag\\\", \\\"value\\\": \\\"0\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"available service hours\", \"value\": 192}, {\"id\": \"F2\", \"name\": \"hours per engagement\", \"value\": 11}, {\"id\": \"F3\", \"name\": \"requested client engagements\", \"value\": 27}, {\"id\": \"F4\", \"name\": \"fee per engagement in USD\", \"value\": 950}], \"case_id\": \"capacity_04\", \"domain\": \"capacity\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 4: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.\", \"Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].\", \"Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].\", \"Idle hours [C04] subtracts used hours [C03] from available hours [F1].\", \"Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].\", \"Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.\", \"Reserve hours [C07] divides available hours [F1] by ten and rounds down.\", \"Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].\", \"Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.\", \"Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].\", \"Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].\", \"Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "capacity_05",
+      "domain": "capacity",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 216
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 12
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 10
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 1050
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 324
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 12
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 10
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 1050
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.",
+          "Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].",
+          "Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].",
+          "Idle hours [C04] subtracts used hours [C03] from available hours [F1].",
+          "Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].",
+          "Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.",
+          "Reserve hours [C07] divides available hours [F1] by ten and rounds down.",
+          "Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].",
+          "Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.",
+          "Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].",
+          "Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].",
+          "Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Raw capacity\nThe current raw capacity is **18**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nAccepted engagements,10\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Used hours\", \"value\": \"120\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Idle hours\nThe current idle hours is **96**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nBooked revenue,10500\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Waitlist\", \"value\": \"0\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve hours\nThe current reserve hours is **21**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nProductive hours,195\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative capacity\", \"value\": \"16\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative bookings\nThe current conservative bookings is **10**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative revenue,10500\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Demand covered flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 5: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Raw capacity\\nThe current raw capacity is **18**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nAccepted engagements,10\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Used hours\\\", \\\"value\\\": \\\"120\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Idle hours\\nThe current idle hours is **96**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nBooked revenue,10500\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Waitlist\\\", \\\"value\\\": \\\"0\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve hours\\nThe current reserve hours is **21**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nProductive hours,195\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative capacity\\\", \\\"value\\\": \\\"16\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative bookings\\nThe current conservative bookings is **10**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative revenue,10500\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Demand covered flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"available service hours\", \"value\": 216}, {\"id\": \"F2\", \"name\": \"hours per engagement\", \"value\": 12}, {\"id\": \"F3\", \"name\": \"requested client engagements\", \"value\": 10}, {\"id\": \"F4\", \"name\": \"fee per engagement in USD\", \"value\": 1050}], \"case_id\": \"capacity_05\", \"domain\": \"capacity\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 5: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.\", \"Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].\", \"Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].\", \"Idle hours [C04] subtracts used hours [C03] from available hours [F1].\", \"Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].\", \"Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.\", \"Reserve hours [C07] divides available hours [F1] by ten and rounds down.\", \"Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].\", \"Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.\", \"Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].\", \"Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].\", \"Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "capacity_06",
+      "domain": "capacity",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 240
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 13
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 29
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 1150
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "available service hours",
+          "value": 240
+        },
+        {
+          "id": "F2",
+          "name": "hours per engagement",
+          "value": 17
+        },
+        {
+          "id": "F3",
+          "name": "requested client engagements",
+          "value": 29
+        },
+        {
+          "id": "F4",
+          "name": "fee per engagement in USD",
+          "value": 1150
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.",
+          "Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].",
+          "Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].",
+          "Idle hours [C04] subtracts used hours [C03] from available hours [F1].",
+          "Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].",
+          "Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.",
+          "Reserve hours [C07] divides available hours [F1] by ten and rounds down.",
+          "Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].",
+          "Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.",
+          "Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].",
+          "Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].",
+          "Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### Raw capacity\nThe current raw capacity is **18**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nAccepted engagements,18\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Used hours\", \"value\": \"234\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Idle hours\nThe current idle hours is **6**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nBooked revenue,20700\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Waitlist\", \"value\": \"11\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Reserve hours\nThe current reserve hours is **24**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nProductive hours,216\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Conservative capacity\", \"value\": \"16\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### Conservative bookings\nThe current conservative bookings is **16**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nConservative revenue,18400\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Demand covered flag\", \"value\": \"0\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 6: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### Raw capacity\\nThe current raw capacity is **18**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nAccepted engagements,18\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Used hours\\\", \\\"value\\\": \\\"234\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Idle hours\\nThe current idle hours is **6**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nBooked revenue,20700\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Waitlist\\\", \\\"value\\\": \\\"11\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Reserve hours\\nThe current reserve hours is **24**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nProductive hours,216\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Conservative capacity\\\", \\\"value\\\": \\\"16\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### Conservative bookings\\nThe current conservative bookings is **16**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nConservative revenue,18400\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Demand covered flag\\\", \\\"value\\\": \\\"0\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"available service hours\", \"value\": 240}, {\"id\": \"F2\", \"name\": \"hours per engagement\", \"value\": 13}, {\"id\": \"F3\", \"name\": \"requested client engagements\", \"value\": 29}, {\"id\": \"F4\", \"name\": \"fee per engagement in USD\", \"value\": 1150}], \"case_id\": \"capacity_06\", \"domain\": \"capacity\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 6: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"Raw capacity [C01] divides available hours [F1] by hours per engagement [F2] and rounds down.\", \"Accepted engagements [C02] is the smaller of raw capacity [C01] and requested engagements [F3].\", \"Used hours [C03] multiplies accepted engagements [C02] by hours per engagement [F2].\", \"Idle hours [C04] subtracts used hours [C03] from available hours [F1].\", \"Booked revenue [C05] multiplies accepted engagements [C02] by fee per engagement [F4].\", \"Waitlist [C06] subtracts accepted engagements [C02] from requested engagements [F3], with a minimum of zero.\", \"Reserve hours [C07] divides available hours [F1] by ten and rounds down.\", \"Productive hours [C08] subtracts reserve hours [C07] from available hours [F1].\", \"Conservative capacity [C09] divides productive hours [C08] by hours per engagement [F2] and rounds down.\", \"Conservative bookings [C10] is the smaller of conservative capacity [C09] and requested engagements [F3].\", \"Conservative revenue [C11] multiplies conservative bookings [C10] by fee per engagement [F4].\", \"Demand covered flag [C12] is 1 when conservative bookings [C10] is at least requested engagements [F3], and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "pricing_01",
+      "domain": "pricing",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 95
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 55
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 25
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 5
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 142
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 55
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 25
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 5
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "List revenue [C01] multiplies list unit price [F1] by ordered units [F3].",
+          "Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.",
+          "Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].",
+          "Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].",
+          "Profit [C05] subtracts delivery cost [C04] from net revenue [C03].",
+          "Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.",
+          "Effective unit price [C07] divides net revenue [C03] by ordered units [F3].",
+          "Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].",
+          "Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.",
+          "List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].",
+          "Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.",
+          "Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### List revenue\nThe current list revenue is **2375**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nDiscount amount,118.75\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Net revenue\", \"value\": \"2256.25\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Delivery cost\nThe current delivery cost is **1375**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nProfit,881.25\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Margin percent\", \"value\": \"39.05817175\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Effective unit price\nThe current effective unit price is **90.25**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nUnit margin,35.25\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Break-even list price\", \"value\": \"57.89473684\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### List headroom\nThe current list headroom is **1000**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nMaximum discount percent,42.10526316\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Profitable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 1: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### List revenue\\nThe current list revenue is **2375**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nDiscount amount,118.75\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Net revenue\\\", \\\"value\\\": \\\"2256.25\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Delivery cost\\nThe current delivery cost is **1375**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nProfit,881.25\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Margin percent\\\", \\\"value\\\": \\\"39.05817175\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Effective unit price\\nThe current effective unit price is **90.25**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nUnit margin,35.25\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Break-even list price\\\", \\\"value\\\": \\\"57.89473684\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### List headroom\\nThe current list headroom is **1000**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nMaximum discount percent,42.10526316\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Profitable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"list unit price in USD\", \"value\": 95}, {\"id\": \"F2\", \"name\": \"unit delivery cost in USD\", \"value\": 55}, {\"id\": \"F3\", \"name\": \"ordered units\", \"value\": 25}, {\"id\": \"F4\", \"name\": \"discount percent\", \"value\": 5}], \"case_id\": \"pricing_01\", \"domain\": \"pricing\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 1: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"List revenue [C01] multiplies list unit price [F1] by ordered units [F3].\", \"Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.\", \"Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].\", \"Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].\", \"Profit [C05] subtracts delivery cost [C04] from net revenue [C03].\", \"Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.\", \"Effective unit price [C07] divides net revenue [C03] by ordered units [F3].\", \"Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].\", \"Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.\", \"List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].\", \"Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.\", \"Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "pricing_02",
+      "domain": "pricing",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 110
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 63
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 32
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 8
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 110
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 84
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 32
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 8
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "List revenue [C01] multiplies list unit price [F1] by ordered units [F3].",
+          "Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.",
+          "Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].",
+          "Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].",
+          "Profit [C05] subtracts delivery cost [C04] from net revenue [C03].",
+          "Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.",
+          "Effective unit price [C07] divides net revenue [C03] by ordered units [F3].",
+          "Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].",
+          "Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.",
+          "List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].",
+          "Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.",
+          "Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### List revenue\nThe current list revenue is **3520**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nDiscount amount,281.6\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Net revenue\", \"value\": \"3238.4\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Delivery cost\nThe current delivery cost is **2016**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nProfit,1222.4\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Margin percent\", \"value\": \"37.74703557\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Effective unit price\nThe current effective unit price is **101.2**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nUnit margin,38.2\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Break-even list price\", \"value\": \"68.47826087\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### List headroom\nThe current list headroom is **1504**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nMaximum discount percent,42.72727273\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Profitable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 2: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### List revenue\\nThe current list revenue is **3520**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nDiscount amount,281.6\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Net revenue\\\", \\\"value\\\": \\\"3238.4\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Delivery cost\\nThe current delivery cost is **2016**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nProfit,1222.4\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Margin percent\\\", \\\"value\\\": \\\"37.74703557\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Effective unit price\\nThe current effective unit price is **101.2**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nUnit margin,38.2\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Break-even list price\\\", \\\"value\\\": \\\"68.47826087\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### List headroom\\nThe current list headroom is **1504**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nMaximum discount percent,42.72727273\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Profitable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"list unit price in USD\", \"value\": 110}, {\"id\": \"F2\", \"name\": \"unit delivery cost in USD\", \"value\": 63}, {\"id\": \"F3\", \"name\": \"ordered units\", \"value\": 32}, {\"id\": \"F4\", \"name\": \"discount percent\", \"value\": 8}], \"case_id\": \"pricing_02\", \"domain\": \"pricing\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 2: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"List revenue [C01] multiplies list unit price [F1] by ordered units [F3].\", \"Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.\", \"Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].\", \"Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].\", \"Profit [C05] subtracts delivery cost [C04] from net revenue [C03].\", \"Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.\", \"Effective unit price [C07] divides net revenue [C03] by ordered units [F3].\", \"Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].\", \"Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.\", \"List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].\", \"Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.\", \"Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "pricing_03",
+      "domain": "pricing",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 125
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 71
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 39
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 11
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 125
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 71
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 58
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 11
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "List revenue [C01] multiplies list unit price [F1] by ordered units [F3].",
+          "Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.",
+          "Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].",
+          "Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].",
+          "Profit [C05] subtracts delivery cost [C04] from net revenue [C03].",
+          "Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.",
+          "Effective unit price [C07] divides net revenue [C03] by ordered units [F3].",
+          "Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].",
+          "Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.",
+          "List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].",
+          "Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.",
+          "Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### List revenue\nThe current list revenue is **4875**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nDiscount amount,536.25\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Net revenue\", \"value\": \"4338.75\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Delivery cost\nThe current delivery cost is **2769**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nProfit,1569.75\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Margin percent\", \"value\": \"36.17977528\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Effective unit price\nThe current effective unit price is **111.25**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nUnit margin,40.25\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Break-even list price\", \"value\": \"79.7752809\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### List headroom\nThe current list headroom is **2106**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nMaximum discount percent,43.2\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Profitable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 3: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### List revenue\\nThe current list revenue is **4875**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nDiscount amount,536.25\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Net revenue\\\", \\\"value\\\": \\\"4338.75\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Delivery cost\\nThe current delivery cost is **2769**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nProfit,1569.75\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Margin percent\\\", \\\"value\\\": \\\"36.17977528\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Effective unit price\\nThe current effective unit price is **111.25**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nUnit margin,40.25\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Break-even list price\\\", \\\"value\\\": \\\"79.7752809\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### List headroom\\nThe current list headroom is **2106**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nMaximum discount percent,43.2\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Profitable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"list unit price in USD\", \"value\": 125}, {\"id\": \"F2\", \"name\": \"unit delivery cost in USD\", \"value\": 71}, {\"id\": \"F3\", \"name\": \"ordered units\", \"value\": 39}, {\"id\": \"F4\", \"name\": \"discount percent\", \"value\": 11}], \"case_id\": \"pricing_03\", \"domain\": \"pricing\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 3: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"List revenue [C01] multiplies list unit price [F1] by ordered units [F3].\", \"Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.\", \"Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].\", \"Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].\", \"Profit [C05] subtracts delivery cost [C04] from net revenue [C03].\", \"Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.\", \"Effective unit price [C07] divides net revenue [C03] by ordered units [F3].\", \"Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].\", \"Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.\", \"List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].\", \"Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.\", \"Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "pricing_04",
+      "domain": "pricing",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 140
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 79
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 46
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 14
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 140
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 79
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 46
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 18
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "List revenue [C01] multiplies list unit price [F1] by ordered units [F3].",
+          "Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.",
+          "Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].",
+          "Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].",
+          "Profit [C05] subtracts delivery cost [C04] from net revenue [C03].",
+          "Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.",
+          "Effective unit price [C07] divides net revenue [C03] by ordered units [F3].",
+          "Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].",
+          "Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.",
+          "List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].",
+          "Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.",
+          "Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### List revenue\nThe current list revenue is **6440**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nDiscount amount,901.6\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Net revenue\", \"value\": \"5538.4\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Delivery cost\nThe current delivery cost is **3634**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nProfit,1904.4\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Margin percent\", \"value\": \"34.38538206\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Effective unit price\nThe current effective unit price is **120.4**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nUnit margin,41.4\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Break-even list price\", \"value\": \"91.86046512\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### List headroom\nThe current list headroom is **2806**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nMaximum discount percent,43.57142857\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Profitable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 4: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### List revenue\\nThe current list revenue is **6440**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nDiscount amount,901.6\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Net revenue\\\", \\\"value\\\": \\\"5538.4\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Delivery cost\\nThe current delivery cost is **3634**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nProfit,1904.4\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Margin percent\\\", \\\"value\\\": \\\"34.38538206\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Effective unit price\\nThe current effective unit price is **120.4**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nUnit margin,41.4\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Break-even list price\\\", \\\"value\\\": \\\"91.86046512\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### List headroom\\nThe current list headroom is **2806**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nMaximum discount percent,43.57142857\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Profitable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"list unit price in USD\", \"value\": 140}, {\"id\": \"F2\", \"name\": \"unit delivery cost in USD\", \"value\": 79}, {\"id\": \"F3\", \"name\": \"ordered units\", \"value\": 46}, {\"id\": \"F4\", \"name\": \"discount percent\", \"value\": 14}], \"case_id\": \"pricing_04\", \"domain\": \"pricing\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 4: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"List revenue [C01] multiplies list unit price [F1] by ordered units [F3].\", \"Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.\", \"Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].\", \"Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].\", \"Profit [C05] subtracts delivery cost [C04] from net revenue [C03].\", \"Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.\", \"Effective unit price [C07] divides net revenue [C03] by ordered units [F3].\", \"Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].\", \"Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.\", \"List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].\", \"Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.\", \"Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "pricing_05",
+      "domain": "pricing",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 155
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 87
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 53
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 17
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 232
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 87
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 53
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 17
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "List revenue [C01] multiplies list unit price [F1] by ordered units [F3].",
+          "Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.",
+          "Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].",
+          "Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].",
+          "Profit [C05] subtracts delivery cost [C04] from net revenue [C03].",
+          "Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.",
+          "Effective unit price [C07] divides net revenue [C03] by ordered units [F3].",
+          "Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].",
+          "Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.",
+          "List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].",
+          "Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.",
+          "Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### List revenue\nThe current list revenue is **8215**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nDiscount amount,1396.55\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Net revenue\", \"value\": \"6818.45\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Delivery cost\nThe current delivery cost is **4611**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nProfit,2207.45\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Margin percent\", \"value\": \"32.37465993\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Effective unit price\nThe current effective unit price is **128.65**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nUnit margin,41.65\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Break-even list price\", \"value\": \"104.81927711\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### List headroom\nThe current list headroom is **3604**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nMaximum discount percent,43.87096774\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Profitable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 5: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### List revenue\\nThe current list revenue is **8215**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nDiscount amount,1396.55\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Net revenue\\\", \\\"value\\\": \\\"6818.45\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Delivery cost\\nThe current delivery cost is **4611**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nProfit,2207.45\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Margin percent\\\", \\\"value\\\": \\\"32.37465993\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Effective unit price\\nThe current effective unit price is **128.65**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nUnit margin,41.65\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Break-even list price\\\", \\\"value\\\": \\\"104.81927711\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### List headroom\\nThe current list headroom is **3604**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nMaximum discount percent,43.87096774\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Profitable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"list unit price in USD\", \"value\": 155}, {\"id\": \"F2\", \"name\": \"unit delivery cost in USD\", \"value\": 87}, {\"id\": \"F3\", \"name\": \"ordered units\", \"value\": 53}, {\"id\": \"F4\", \"name\": \"discount percent\", \"value\": 17}], \"case_id\": \"pricing_05\", \"domain\": \"pricing\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 5: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"List revenue [C01] multiplies list unit price [F1] by ordered units [F3].\", \"Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.\", \"Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].\", \"Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].\", \"Profit [C05] subtracts delivery cost [C04] from net revenue [C03].\", \"Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.\", \"Effective unit price [C07] divides net revenue [C03] by ordered units [F3].\", \"Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].\", \"Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.\", \"List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].\", \"Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.\", \"Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    },
+    {
+      "case_id": "pricing_06",
+      "domain": "pricing",
+      "before_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 170
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 95
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 60
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 20
+        }
+      ],
+      "after_sources": [
+        {
+          "id": "F1",
+          "name": "list unit price in USD",
+          "value": 170
+        },
+        {
+          "id": "F2",
+          "name": "unit delivery cost in USD",
+          "value": 126
+        },
+        {
+          "id": "F3",
+          "name": "ordered units",
+          "value": 60
+        },
+        {
+          "id": "F4",
+          "name": "discount percent",
+          "value": 20
+        }
+      ],
+      "task_contract": {
+        "instructions": "Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.",
+        "rules": [
+          "List revenue [C01] multiplies list unit price [F1] by ordered units [F3].",
+          "Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.",
+          "Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].",
+          "Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].",
+          "Profit [C05] subtracts delivery cost [C04] from net revenue [C03].",
+          "Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.",
+          "Effective unit price [C07] divides net revenue [C03] by ordered units [F3].",
+          "Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].",
+          "Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.",
+          "List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].",
+          "Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.",
+          "Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "C01",
+          "format": "markdown",
+          "content": "### List revenue\nThe current list revenue is **10200**."
+        },
+        {
+          "id": "C02",
+          "format": "csv",
+          "content": "metric,value\nDiscount amount,2040\n"
+        },
+        {
+          "id": "C03",
+          "format": "json",
+          "content": "{\"metric\": \"Net revenue\", \"value\": \"8160\"}"
+        },
+        {
+          "id": "C04",
+          "format": "markdown",
+          "content": "### Delivery cost\nThe current delivery cost is **5700**."
+        },
+        {
+          "id": "C05",
+          "format": "csv",
+          "content": "metric,value\nProfit,2460\n"
+        },
+        {
+          "id": "C06",
+          "format": "json",
+          "content": "{\"metric\": \"Margin percent\", \"value\": \"30.14705882\"}"
+        },
+        {
+          "id": "C07",
+          "format": "markdown",
+          "content": "### Effective unit price\nThe current effective unit price is **136**."
+        },
+        {
+          "id": "C08",
+          "format": "csv",
+          "content": "metric,value\nUnit margin,41\n"
+        },
+        {
+          "id": "C09",
+          "format": "json",
+          "content": "{\"metric\": \"Break-even list price\", \"value\": \"118.75\"}"
+        },
+        {
+          "id": "C10",
+          "format": "markdown",
+          "content": "### List headroom\nThe current list headroom is **4500**."
+        },
+        {
+          "id": "C11",
+          "format": "csv",
+          "content": "metric,value\nMaximum discount percent,44.11764706\n"
+        },
+        {
+          "id": "C12",
+          "format": "json",
+          "content": "{\"metric\": \"Profitable flag\", \"value\": \"1\"}"
+        }
+      ],
+      "human_notes": [
+        {
+          "id": "H01",
+          "text": "Client 6: retain the signed service-terms wording."
+        },
+        {
+          "id": "H02",
+          "text": "Editorial decision: use a plain-language executive summary; keep the disclaimer intact."
+        }
+      ],
+      "extraction_messages": [
+        {
+          "role": "system",
+          "content": "Extract immediate numerical derivation dependencies from the given workspace task contract and its before-update artifacts. Return JSON only: {\"dependencies\":{\"C01\":[\"F1\"],...}}. Include all twelve claim IDs. A dependency is a source fact or another claim whose value the stated computation directly reads. Include direct operands, not their transitive ancestors. Constants and editorial human notes are not dependencies. Never infer a dependency solely because two displayed values happen to match. Allowed IDs are F1-F4 and C01-C12. Do not output calculations or hidden reasoning."
+        },
+        {
+          "role": "user",
+          "content": "{\"artifacts\": [{\"content\": \"### List revenue\\nThe current list revenue is **10200**.\", \"format\": \"markdown\", \"id\": \"C01\"}, {\"content\": \"metric,value\\nDiscount amount,2040\\n\", \"format\": \"csv\", \"id\": \"C02\"}, {\"content\": \"{\\\"metric\\\": \\\"Net revenue\\\", \\\"value\\\": \\\"8160\\\"}\", \"format\": \"json\", \"id\": \"C03\"}, {\"content\": \"### Delivery cost\\nThe current delivery cost is **5700**.\", \"format\": \"markdown\", \"id\": \"C04\"}, {\"content\": \"metric,value\\nProfit,2460\\n\", \"format\": \"csv\", \"id\": \"C05\"}, {\"content\": \"{\\\"metric\\\": \\\"Margin percent\\\", \\\"value\\\": \\\"30.14705882\\\"}\", \"format\": \"json\", \"id\": \"C06\"}, {\"content\": \"### Effective unit price\\nThe current effective unit price is **136**.\", \"format\": \"markdown\", \"id\": \"C07\"}, {\"content\": \"metric,value\\nUnit margin,41\\n\", \"format\": \"csv\", \"id\": \"C08\"}, {\"content\": \"{\\\"metric\\\": \\\"Break-even list price\\\", \\\"value\\\": \\\"118.75\\\"}\", \"format\": \"json\", \"id\": \"C09\"}, {\"content\": \"### List headroom\\nThe current list headroom is **4500**.\", \"format\": \"markdown\", \"id\": \"C10\"}, {\"content\": \"metric,value\\nMaximum discount percent,44.11764706\\n\", \"format\": \"csv\", \"id\": \"C11\"}, {\"content\": \"{\\\"metric\\\": \\\"Profitable flag\\\", \\\"value\\\": \\\"1\\\"}\", \"format\": \"json\", \"id\": \"C12\"}], \"before_sources\": [{\"id\": \"F1\", \"name\": \"list unit price in USD\", \"value\": 170}, {\"id\": \"F2\", \"name\": \"unit delivery cost in USD\", \"value\": 95}, {\"id\": \"F3\", \"name\": \"ordered units\", \"value\": 60}, {\"id\": \"F4\", \"name\": \"discount percent\", \"value\": 20}], \"case_id\": \"pricing_06\", \"domain\": \"pricing\", \"human_notes\": [{\"id\": \"H01\", \"text\": \"Client 6: retain the signed service-terms wording.\"}, {\"id\": \"H02\", \"text\": \"Editorial decision: use a plain-language executive summary; keep the disclaimer intact.\"}], \"task_contract\": {\"instructions\": \"Maintain these twelve numeric claims across the workspace. Keep exact intermediate values; displayed decimals are rounded views. F1-F4 are authoritative source facts. A flag is numeric 0 or1. Preserve both human notes unchanged.\", \"rules\": [\"List revenue [C01] multiplies list unit price [F1] by ordered units [F3].\", \"Discount amount [C02] multiplies list revenue [C01] by discount percent [F4] and divides by 100.\", \"Net revenue [C03] subtracts discount amount [C02] from list revenue [C01].\", \"Delivery cost [C04] multiplies unit delivery cost [F2] by ordered units [F3].\", \"Profit [C05] subtracts delivery cost [C04] from net revenue [C03].\", \"Margin percent [C06] divides profit [C05] by net revenue [C03] and multiplies by 100.\", \"Effective unit price [C07] divides net revenue [C03] by ordered units [F3].\", \"Unit margin [C08] subtracts unit delivery cost [F2] from effective unit price [C07].\", \"Break-even list price [C09] divides unit delivery cost [F2] by one minus discount percent [F4] divided by 100.\", \"List headroom [C10] subtracts delivery cost [C04] from list revenue [C01].\", \"Maximum discount percent [C11] divides list headroom [C10] by list revenue [C01] and multiplies by 100.\", \"Profitable flag [C12] is 1 when profit [C05] is positive and 0 otherwise.\"]}}"
+        }
+      ]
+    }
+  ]
+}

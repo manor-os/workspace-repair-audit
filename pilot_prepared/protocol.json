@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "seed": 20261014,
+  "case_count": 18,
+  "domains": [
+    "budget",
+    "capacity",
+    "pricing"
+  ],
+  "cases_per_domain": 6,
+  "claims_per_case": 12,
+  "source_facts_per_case": 4,
+  "mixed_formats": [
+    "markdown",
+    "csv",
+    "json"
+  ],
+  "freeze_before_model_calls": true,
+  "gold_visible_to_extractor": false,
+  "extraction_calls_planned": 18,
+  "repair_calls_optional": 18,
+  "maximum_response_tokens_requested": 2500,
+  "numeric_tolerance": {
+    "absolute": 0.0001,
+    "relative": 1e-06
+  },
+  "primary_scope": "Natural model dependency extraction errors on authored synthetic task contracts; not real-world business cases or full-agent evaluation.",
+  "impact_truth": "Exact rational before/after numeric value change, not dependency reachability.",
+  "routing_metric_limit": "Reachability can conservatively overselect mathematically unchanged claims, including ratios and bottleneck branches.",
+  "no_new_statistical_theorem_claim": true,
+  "implementation_sha256": "17e8610e0e1ae2daf487c0a1424f6b184c7ce3ecfec0fb3ad603152225a5364e",
+  "files": {
+    "public/inputs.json": "ed16430cc0f4f1f9298655663a153d5bb0749ee83e49ab2d9c70e9a08aa869f5",
+    "evaluator/gold.json": "baed6c69733986e8ff6a29648af3e142ba2f07d5137dae75203e3ee211fcefb9"
+  }
+}

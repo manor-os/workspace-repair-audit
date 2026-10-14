@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "verified_on_local_date": "2026-10-14",
+  "purpose": "Prior-art boundaries for a proposed Manor workspace repair research prototype.",
+  "search_scope": "Selected closest primary papers and official repositories; not an exhaustive novelty search.",
+  "statistical_theorem_novelty_claim": false,
+  "works": [
+    {
+      "id": "boardroomai",
+      "title": "BoardroomAI: Dependency-Aware Human-Steerable Multi-Agent Deliberation through Evolving Decision Graphs",
+      "date": "2026-08-13",
+      "date_type": "arXiv v1 submission",
+      "source_type": "primary preprint full text",
+      "url": "https://arxiv.org/html/2608.13046v1",
+      "metadata_url": "https://arxiv.org/abs/2608.13046",
+      "verified_sections": [
+        "3",
+        "4.2",
+        "4.3",
+        "5.1",
+        "5.2"
+      ],
+      "overlap": [
+        "Typed dependency graphs, alternative justifications, selective specialist repair, preservation and confidence-based full fallback.",
+        "Random missing-edge stress testing and repair-context closure already proposed."
+      ],
+      "limits": [
+        "Synthetic graph experiments and a small prototype pilot; canonical pilot dependencies mechanically constructed.",
+        "Fallback disabled in missing-edge experiment; reported decision-sufficient closure not evaluated."
+      ],
+      "baseline_use": "Adapt signature propagation and declared fallback; clearly label adaptation, not a reproduction.",
+      "novelty_risk": "Graph routing plus selective regeneration or edge-deletion stress tests are established."
+    },
+    {
+      "id": "memorepair",
+      "title": "MEMOREPAIR: Barrier-First Cascade Repair in Agentic Memory",
+      "date": "2026-05-08",
+      "date_type": "arXiv v1 submission",
+      "source_type": "primary preprint full text",
+      "url": "https://arxiv.org/html/2605.07242v1",
+      "metadata_url": "https://arxiv.org/abs/2605.07242",
+      "verified_sections": [
+        "Abstract",
+        "3.4",
+        "4",
+        "5"
+      ],
+      "overlap": [
+        "Withdraw invalidated derived artifacts, rebuild validated successors, enforce predecessor closure and optimize repair selection by min-cut.",
+        "Source corrections, deletions, migrations and missing influence edges already studied."
+      ],
+      "limits": [
+        "Complete influence provenance and validation coverage are explicit assumptions.",
+        "Random deletion of 1% of influence edges reports 17.7% leakage; this is a reported result, not independently reproduced."
+      ],
+      "baseline_use": "Cascade repair using the same repair operator and observed graph; report completeness assumptions.",
+      "novelty_risk": "Cascade update, barrier-first repair, predecessor closure and min-cut are prior art."
+    },
+    {
+      "id": "ledger",
+      "title": "LEDGER: Scaling Agentic Document Editing with Dependency-aware Graph Retrieval",
+      "date": "2026-06-19",
+      "date_type": "arXiv v1 submission; ACL Findings2026 publication separately confirmed",
+      "source_type": "primary preprint full text plus publisher landing page",
+      "url": "https://arxiv.org/html/2606.28379v1",
+      "publisher_url": "https://aclanthology.org/2026.findings-acl.515/",
+      "metadata_url": "https://arxiv.org/abs/2606.28379",
+      "verified_sections": [
+        "3.1",
+        "3.3",
+        "Limitations",
+        "AppendixA",
+        "AppendixE"
+      ],
+      "overlap": [
+        "Typed explicit, implicit, containment and semantic dependencies guide context retrieval.",
+        "Counterfactual LLM tests infer directional implicit dependencies; consistency verification and incremental graph refresh are already included."
+      ],
+      "limits": [
+        "Structured-document focus; missing or wrong extraction can propagate.",
+        "External edits may desynchronize the graph; graph construction cost must be counted."
+      ],
+      "baseline_use": "Counterfactual extraction plus verification under a matched total token budget, not only flat semantic RAG.",
+      "novelty_risk": "Semantic audit or counterfactual dependency inference alone is not new."
+    },
+    {
+      "id": "cavert",
+      "title": "Beyond Corrected Memory: Execution Consistency in Multi-Agent Systems",
+      "date": "2026-10-06",
+      "date_type": "arXiv v1 submission",
+      "source_type": "primary preprint full text",
+      "url": "https://arxiv.org/html/2610.08101v1",
+      "metadata_url": "https://arxiv.org/abs/2610.08101",
+      "verified_sections": [
+        "Abstract",
+        "4",
+        "ReproducibilityStatement",
+        "E.5"
+      ],
+      "overlap": [
+        "Judges duties involving state use, information handoffs and final-state agreement using explicit execution evidence.",
+        "Extracted relationships support diagnosis and corrective continuation."
+      ],
+      "limits": [
+        "Extraction quality bounds diagnostic quality.",
+        "Recovery gate acts before commitment; compensation of committed external effects is out of scope."
+      ],
+      "baseline_use": "Useful conceptual evidence/diagnosis comparator; not directly a cross-file editing method.",
+      "novelty_risk": "Correct memory alone does not prove compliant execution; this distinction is already formalized."
+    },
+    {
+      "id": "codeplan",
+      "title": "CodePlan: Repository-level Coding using LLMs and Planning",
+      "date": "2023-09-21",
+      "date_type": "initial arXiv submission; FSE2024 acceptance confirmed by official repo",
+      "source_type": "primary preprint and author organization repository",
+      "url": "https://arxiv.org/abs/2309.12499",
+      "official_repository": "https://github.com/microsoft/CodePlan",
+      "overlap": [
+        "Incremental dependencies, change-impact analysis and adaptive multi-file edit plans."
+      ],
+      "limits": [
+        "Static code structure differs from heterogeneous generated workspace deliverables.",
+        "Official repository describes data and evaluation scripts; do not claim the original method was executed unless it actually was."
+      ],
+      "baseline_use": "Conceptual precedent; any independent adaptation must be labeled.",
+      "novelty_risk": "Dependency-aware adaptive edit planning is established."
+    },
+    {
+      "id": "coverage_audits",
+      "title": "Finite-Sample Coverage Audits for High-Recall Candidate Generation: Certification and Learning-Theoretic Design",
+      "date": "2026-07-23",
+      "date_type": "arXiv v1 submission",
+      "source_type": "primary preprint full text",
+      "authors": [
+        "Martin Anthony",
+        "Kaveh Salehzadeh Nobari"
+      ],
+      "url": "https://arxiv.org/html/2607.21480v1",
+      "metadata_url": "https://arxiv.org/abs/2607.21480",
+      "verified_sections": [
+        "2.3",
+        "2.4",
+        "2.5",
+        "4.2",
+        "4.5",
+        "4.6",
+        "4.7",
+        "4.8"
+      ],
+      "overlap": [
+        "Excluded-pool auditing, exact hypergeometric inversion, missed-mass certification and sample-size planning."
+      ],
+      "limits": [
+        "Candidate generator/family and audit rule fixed before certification labels.",
+        "Finite-corpus probability refers to audit randomization, not model truth or future populations.",
+        "Oracle relevance labels and stable population needed; semantic repair correctness is outside the certificate."
+      ],
+      "baseline_use": "Attribute the statistical machinery; a workspace-specific application is not a new audit theorem.",
+      "novelty_risk": "Excluded-pool certification and its label-complexity principle already exist."
+    },
+    {
+      "id": "sequential_selective_release",
+      "title": "Exact Finite-Population Sequential Auditing for Selective Release from Model-Proposed Candidate Sets",
+      "date": "2026-09-21",
+      "date_type": "publisher publication date",
+      "source_type": "primary journal publisher metadata and abstract returned in search",
+      "authors": [
+        "Yusheng Hu",
+        "Zhiyuan Zhou",
+        "Yongfeng Zhu",
+        "Kewei Liang"
+      ],
+      "venue": "Mathematics 14(18),3427",
+      "doi": "10.3390/math14183427",
+      "url": "https://www.mdpi.com/2227-7390/14/18/3427",
+      "issue_url": "https://www.mdpi.com/2227-7390/14/18",
+      "verified_scope": "Publisher title, authors, dates, citation, abstract. Direct article/HTML/XML/PDF fetch attempts returned429/unavailable; do not imply full-text line-by-line verification.",
+      "overlap": [
+        "Candidate and audit plan frozen before outcomes; uniform sampling without replacement controls release, continued review or full review.",
+        "Exact hypergeometric recursion evaluates unsafe-release probabilities and workload."
+      ],
+      "limits": [
+        "Audit randomization operating characteristics; retrospective development choices do not establish observed operational savings."
+      ],
+      "baseline_use": "Cite as established selective-release audit machinery; verify detailed algorithm before any faithful reproduction.",
+      "novelty_risk": "Sequential finite-population selective release is established; no new statistical theorem claimed."
+    },
+    {
+      "id": "grounded_continuation",
+      "title": "Grounded Continuation: A Linear-Time Runtime Verifier for LLM Conversations",
+      "date": "2026-10-05",
+      "date_type": "arXiv v3 revision; first submitted2026-05-13",
+      "source_type": "primary preprint metadata and abstract",
+      "url": "https://arxiv.org/abs/2605.14175v3",
+      "overlap": [
+        "Interpreted epistemic operations maintain a dependency map; retraction propagates and deterministic checks identify unsupported continuations."
+      ],
+      "limits": [
+        "Conversational grounding rather than heterogeneous deliverable editing."
+      ],
+      "baseline_use": "Related work for belief revision and claim support.",
+      "novelty_risk": "Epistemic dependency maintenance and retraction propagation are established."
+    }
+  ],
+  "recommended_gap": {
+    "status": "research hypothesis, not established novelty",
+    "question": "How should limited checks be allocated outside an observed dependency graph to discover natural missing/wrong dependencies and repair cross-file workspace outputs?",
+    "distinguishing_evidence_needed": [
+      "Natural extraction failures, beyond injected edge deletion.",
+      "Matched total cost including extraction, construction, audit, fallback and repair.",
+      "Held-out workspace families and task-level final correctness.",
+      "Version-pinned before/after artifacts and valid human-edit preservation."
+    ],
+    "prototype_boundary": "Deterministic routing with oracle labels is a bounded systems experiment; it is not evidence of autonomous semantic repair or model improvement."
+  },
+  "recommended_baselines": [
+    "Full regeneration",
+    "Full verification then selective patching",
+    "Semantic retrieval update",
+    "Observed dependency reachability",
+    "BoardroomAI-inspired signature propagation and declared fallback",
+    "LEDGER-style counterfactual dependency extraction plus verification",
+    "MemoRepair-inspired cascade with identical repair operators"
+  ],
+  "claims_to_avoid": [
+    "First dependency-aware repair system",
+    "First semantic dependency inference",
+    "New exact hypergeometric or finite-population audit theorem",
+    "Production integration based only on static source inspection",
+    "State-of-the-art AI repair from synthetic routing simulations"
+  ]
+}

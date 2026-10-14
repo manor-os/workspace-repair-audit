@@ -1,0 +1,7 @@
+{
+  "prepared_cases": 18,
+  "model_evaluated_cases": 0,
+  "successful_model_calls": 0,
+  "state": "Prepared synthetic natural-language pilot, not executed; no model score reported.",
+  "failure_record": "../research/model_preflight_status.json"
+}

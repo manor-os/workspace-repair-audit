@@ -1,0 +1,255 @@
+{
+  "distinct_instances": 1440,
+  "base_workspaces": 360,
+  "curves": {
+    "observed_closure": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 0.0,
+        "mean_calls": 31.108333333333334,
+        "all_current_fraction": 1.0
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 4.3,
+        "mean_calls": 22.205555555555556,
+        "all_current_fraction": 0.2833333333333333
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 10.522222222222222,
+        "mean_calls": 10.51388888888889,
+        "all_current_fraction": 0.041666666666666664
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 14.347222222222221,
+        "mean_calls": 4.052777777777778,
+        "all_current_fraction": 0.022222222222222223
+      }
+    ],
+    "closure_priority_36": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 1.0416666666666667,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.6611111111111111
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 2.725,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.3055555555555556
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 5.227777777777778,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.08611111111111111
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 6.533333333333333,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.041666666666666664
+      }
+    ],
+    "lexical_36": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 5.594444444444444,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.06944444444444445
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 5.594444444444444,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.06944444444444445
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 5.594444444444444,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.06944444444444445
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 5.594444444444444,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.06944444444444445
+      }
+    ],
+    "uniform_36": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 7.430555555555555,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.019444444444444445
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 7.475,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.016666666666666666
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 7.566666666666666,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.008333333333333333
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 7.394444444444445,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.011111111111111112
+      }
+    ],
+    "risk_36": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 0.8444444444444444,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.6833333333333333
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 2.2055555555555557,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.3527777777777778
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 4.344444444444444,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.12222222222222222
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 5.663888888888889,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.06666666666666667
+      }
+    ],
+    "hybrid_36": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 5.055555555555555,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.12222222222222222
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 5.2027777777777775,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.10277777777777777
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 5.383333333333334,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.08611111111111111
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 5.647222222222222,
+        "mean_calls": 36.0,
+        "all_current_fraction": 0.07222222222222222
+      }
+    ],
+    "ranked_audit_gate": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 0.3,
+        "mean_calls": 58.01111111111111,
+        "all_current_fraction": 0.8972222222222223
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 0.31666666666666665,
+        "mean_calls": 58.4,
+        "all_current_fraction": 0.8944444444444445
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 0.175,
+        "mean_calls": 60.03333333333333,
+        "all_current_fraction": 0.9277777777777778
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 0.24166666666666667,
+        "mean_calls": 59.87777777777778,
+        "all_current_fraction": 0.9083333333333333
+      }
+    ],
+    "full_scan": [
+      {
+        "missing_rate": 0,
+        "n": 360,
+        "mean_residual": 0.0,
+        "mean_calls": 64.0,
+        "all_current_fraction": 1.0
+      },
+      {
+        "missing_rate": 0.1,
+        "n": 360,
+        "mean_residual": 0.0,
+        "mean_calls": 64.0,
+        "all_current_fraction": 1.0
+      },
+      {
+        "missing_rate": 0.3,
+        "n": 360,
+        "mean_residual": 0.0,
+        "mean_calls": 64.0,
+        "all_current_fraction": 1.0
+      },
+      {
+        "missing_rate": 0.5,
+        "n": 360,
+        "mean_residual": 0.0,
+        "mean_calls": 64.0,
+        "all_current_fraction": 1.0
+      }
+    ]
+  },
+  "gate": {
+    "passes": 253,
+    "fallbacks": 1187,
+    "passed_all_current": 119,
+    "passed_with_residual": 134,
+    "unsafe_releases": 6,
+    "coverage_failures": 34
+  },
+  "interpretation": "Descriptive generated-case averages. Four conditions share each base. No population CI or LLM cost inference."
+}
