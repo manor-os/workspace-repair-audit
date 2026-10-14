@@ -1,0 +1,12 @@
+{
+  "byte_identical_files": {
+    "summary.json": true,
+    "outcomes.jsonl.gz": true,
+    "manifest.json": true,
+    "results.csv": true
+  },
+  "calibrated_rows": 1300,
+  "parameter_policy_rows": 3250,
+  "all_calibrated_bounds_and_unsafe_risks_le_delta": true,
+  "replay_adds_independent_cases": false
+}

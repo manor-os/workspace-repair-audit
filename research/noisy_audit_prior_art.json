@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "verified_on_local_date": "2026-10-14",
+  "status": "Prospective literature and mathematical design assessment; not model or held-out experiment results.",
+  "new_theorem_or_first_claim": false,
+  "sources": [
+    {
+      "id": "finite_prevalence_misclassification",
+      "title": "Prevalence Estimation in Finite Populations Adjusted for Misclassification",
+      "authors": [
+        "Arash Mirzahosseini",
+        "Jenő Reiczigel"
+      ],
+      "date": "2026-05-27",
+      "date_type": "publisher online publication; accepted author version2026-04-14",
+      "venue": "Statistics in Biopharmaceutical Research",
+      "doi": "10.1080/19466315.2026.2656259",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/19466315.2026.2656259",
+      "primary_source": true,
+      "verified_scope": "Publisher search returned metadata and indexed full-text Sections1,2,2.1.1 with equations1–8. Direct full/PDF opens returned403/unavailable.",
+      "overlap": "Section2.1.1 models H~Hypergeom(N,K,n), then Y|H=Bin(H,Se)+Bin(n-H,1-Sp), integrating over latent sample positives and inverting exact probability calculations. Sp=1 gives precisely the proposed hypergeometric/binomial detection convolution.",
+      "relevance": "Direct statistical prior art; application to stale workspace claims must be attributed as a systems adaptation, not a new distribution or exact interval.",
+      "limits": "Known Se/Sp methods and independent-validation profile-likelihood uncertainty methods differ; do not transfer unknown-sensitivity guarantees without their assumptions."
+    },
+    {
+      "id": "imperfect_test_exact_2010",
+      "title": "Exact confidence limits for prevalence of a disease with an imperfect diagnostic test",
+      "authors": [
+        "J. Reiczigel",
+        "J. Földi",
+        "L. Ózsvári"
+      ],
+      "date": "2010-03-03",
+      "date_type": "publisher online publication",
+      "venue": "Epidemiology & Infection138(11)",
+      "doi": "10.1017/S0950268810000385",
+      "url": "https://www.cambridge.org/core/journals/epidemiology-and-infection/article/exact-confidence-limits-for-prevalence-of-a-disease-with-an-imperfect-diagnostic-test/0644C396D4364B292419FB0BA1A30BA2",
+      "primary_source": true,
+      "verified_scope": "Publisher full text, Summary/Methods/Discussion.",
+      "overlap": "Exact prevalence inference corrects known sensitivity/specificity; Discussion explicitly notes extension to finite-population hypergeometric inference.",
+      "relevance": "Longstanding exact imperfect-detection interval lineage; do not present diagnostic-noise correction as new."
+    },
+    {
+      "id": "finite_population_misclassification_2023",
+      "title": "Enhanced Inference for Finite Population Sampling-Based Prevalence Estimation with Misclassification Errors",
+      "authors": [
+        "Lin Ge",
+        "Yuzi Zhang",
+        "Lance A. Waller",
+        "Robert H. Lyles"
+      ],
+      "date": "2023-02-07",
+      "date_type": "initial arXiv submission; The American Statistician78(2),192–198 later journal version",
+      "doi": "10.1080/00031305.2023.2250401",
+      "url": "https://arxiv.org/abs/2302.03558",
+      "primary_source": true,
+      "verified_scope": "Author preprint abstract and publisher citation referenced by the2026primarypaper.",
+      "overlap": "Finite population with fixed true-case count and known imperfect diagnostic accuracy; shows naive finite-population variance corrections can understate uncertainty.",
+      "limits": "Its variance and Bayesian methods are distinct from the exact convolution inversion considered here."
+    },
+    {
+      "id": "unknown_sensitivity_exact",
+      "title": "Exact Inference for Disease Prevalence Based on a Test with Unknown Specificity and Sensitivity",
+      "authors": [
+        "Bryan Cai",
+        "John P. A. Ioannidis",
+        "Eran Bendavid",
+        "Lu Tian"
+      ],
+      "date": "2020-11-29",
+      "date_type": "initial arXiv submission; publisher online2022-01-04,journal volume2023",
+      "doi": "10.1080/02664763.2021.2019687",
+      "url": "https://arxiv.org/abs/2011.14423",
+      "publisher_pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10388830/pdf/CJAS_50_2019687.pdf",
+      "primary_source": true,
+      "verified_scope": "Author preprint abstract and publisher-hosted PDF metadata.",
+      "overlap": "Exact inference jointly accounts for prevalence and uncertain diagnostic sensitivity/specificity; uncertainty in the detector is longstanding statistical work.",
+      "limits": "Not automatically a finite-population selective-release procedure; calibration design must be matched rather than borrowing the conclusion."
+    },
+    {
+      "id": "noisy_but_valid",
+      "title": "Noisy but Valid: Robust Statistical Evaluation of LLMs with Imperfect Judges",
+      "authors": [
+        "Chen Feng",
+        "Minghe Shen",
+        "Ananth Balashankar",
+        "Carsten Gerner-Beuerle",
+        "Miguel R. D. Rodrigues"
+      ],
+      "date": "2026-01-28",
+      "date_type": "arXiv v1 submission",
+      "url": "https://arxiv.org/html/2601.20913v1",
+      "primary_source": true,
+      "verified_scope": "Full text Sections3–5 andAppendixG.",
+      "overlap": "Uses clean calibration labels to model judgeTPR/FPR and their uncertainty before noisy-label hypothesis testing.",
+      "limits": "The paper assumes iid calibration/evaluation datasets and uses a different population-risk testing procedure. Its claimed validity is not an independent proof of the proposed finite-batch gate.",
+      "relevance": "Mandatory imperfect-LLM-judge prior art; do not substitute its approximate-looking threshold for exact finite-population arithmetic without review."
+    },
+    {
+      "id": "correlated_llm_errors",
+      "title": "Correlated Errors in Large Language Models",
+      "authors": [
+        "Elliot Myunghoon Kim",
+        "Avi Garg",
+        "Kenny Peng",
+        "Nikhil Garg"
+      ],
+      "date": "2025-07-13",
+      "date_type": "proceedings event start; ICML2025,13–19July",
+      "venue": "PMLR267:30038–30066",
+      "url": "https://proceedings.mlr.press/v267/kim25e.html",
+      "primary_source": true,
+      "verified_scope": "Official proceedings abstract and bibliographic record.",
+      "overlap": "Empirical correlated model errors across architectures/providers, including downstream LLM-as-judge consequences.",
+      "relevance": "Distinct judges/providers or repeated prompts do not establish independent Bernoulli detection."
+    },
+    {
+      "id": "judge_consensus_dependence",
+      "title": "Agreement Overstates Evidence: Error Dependence in LLM Judge Consensus",
+      "authors": [
+        "Elias Hossain",
+        "Niloofar Yousefi",
+        "Ser-Nam Lim"
+      ],
+      "date": "2026-09-18",
+      "date_type": "arXiv v1 submission",
+      "url": "https://arxiv.org/abs/2609.22512",
+      "primary_source": true,
+      "verified_scope": "Primary abstract andmetadata.",
+      "overlap": "Shows correlated judge errors and effective-information loss from consensus; recommends calibrating shared mistakes before voting.",
+      "relevance": "Averaged judge accuracy or agreement does not certify independence or a per-claim sensitivity lower bound."
+    },
+    {
+      "id": "excluded_pool_coverage",
+      "title": "Finite-Sample Coverage Audits for High-Recall Candidate Generation: Certification and Learning-Theoretic Design",
+      "date": "2026-07-23",
+      "date_type": "arXiv v1 submission",
+      "url": "https://arxiv.org/html/2607.21480v1",
+      "primary_source": true,
+      "verified_scope": "Full text; previous evidence file.",
+      "overlap": "Exact finite-corpus count certification and separation of candidate design from audit labels; oracle labels are an explicit boundary.",
+      "relevance": "Existing audit lineage; the noisy-label extension must state its extra assumptions."
+    },
+    {
+      "id": "selective_release",
+      "title": "Exact Finite-Population Sequential Auditing for Selective Release from Model-Proposed Candidate Sets",
+      "date": "2026-09-21",
+      "date_type": "publisher publication",
+      "doi": "10.3390/math14183427",
+      "url": "https://www.mdpi.com/2227-7390/14/18/3427",
+      "primary_source": true,
+      "verified_scope": "Publisher metadata/abstract in previous evidence file; direct fulltext unavailable.",
+      "overlap": "Frozen candidate/audit plans, finite-population release/full-review decisions and exact operating-characteristic calculations.",
+      "relevance": "Selective-release policy and exact enumeration are established statistical components."
+    }
+  ],
+  "candidate_model": {
+    "population_size": 64,
+    "first_phase_noisy_calls": 12,
+    "audit_size": 24,
+    "audit_population": "All 64 claims after the first-phase repairs, if that pipeline is exercised; prefix claims remain eligible. A standalone component sweep has no first-phase outcome claim.",
+    "latent_model": "H|K~Hypergeom(N,K,n); Y|H~Binomial(H,q0) when specificity1.",
+    "cdf": "F_K(k;q0)=sum_h [choose(K,h)*choose(N-K,n-h)/choose(N,n)]*sum_{j=0}^{min(k,h)}choose(h,j)*q0^j*(1-q0)^(h-j)",
+    "upper_total": "Kplus(k) = max {K in {k,...,N}: F_K(k;q0) > delta}. Search through N, not N-n+k; sampled negatives can be false negatives.",
+    "post_repair_upper": "max(0, Kplus(k)-k), bounding all remaining stale claims, including sampled false negatives. Subtract verified correctly repaired detections k, not the sample size n or unobserved latent H.",
+    "decision": "Release only if the post-repair upper count is at most tau; otherwise withhold. Enumerate every k: Kplus(k)-k need not be monotone.",
+    "attribution": "The convolution and exact inversion specialize Mirzahosseini/Reiczigel (2026) to specificity 1. Monotone-sensitivity coupling is standard stochastic-order reasoning; no new theorem is asserted.",
+    "reasoning_check": "For true independent q >= q0, detection counts stochastically dominate the q0 model, so inversion at q0 is conservative. Conditioning on the first phase is legitimate only if the fresh audit detection assumptions continue to hold for the remaining population."
+  },
+  "assumptions": [
+    "After any arbitrary first-phase12calls/repairs, freeze all64claim labels and target semantics. Conditional on that history, K is fixed; no unmodeled patch may change another target.",
+    "Uniformly sample24distinct claimIDs from all64, independently of hidden residual labels and the audit-stage detection noise. Prefix claims remain eligible because first-phase negatives may be false negatives.",
+    "For each sampled stale claim, audit detection is fresh, conditionally independent across claims and independent of first-phase detection given frozen state; its probability is at least knownq0. A merely average historical sensitivity is insufficient.",
+    "False positives are absent, or every reported positive is independently confirmed before being counted as a repaired stale claim. False-positive labels cannot simply be subtracted fromK.",
+    "Every counted detected stale claim is correctly repaired and no repair introduces a new defect. Numeric correctness of an ideal patch is a separate assumption from detection.",
+    "Oneprespecified audit look and a frozenq0,delta,tolerance. Failure means withhold; no noisy fullscan is silently treated as perfect settlement.",
+    "Guarantee is per frozen batch over audit sampling and independent detection randomization, not conditional-on-release95percent correctness, global corpus coverage or real-world truth."
+  ],
+  "calibration_cautions": [
+    "An independent lower confidence bound q0 can consume a calibration error budget eta. Under a justified shared detector model, a union-bound composition has total error at most eta + delta. Account for both uncertainties explicitly.",
+    "An iid calibration mean does not establish a per-claim or per-family sensitivity lower bound. Shift, hard residuals selected by the first phase, shared blind spots and deterministic validators can invalidate transfer.",
+    "Independent heterogeneous sensitivities qi >= q0 admit stochastic domination. Marginal sensitivities without independence do not justify binomial thinning.",
+    "Consensus, repeated seeds, different provider names and calibrated self-confidence do not establish independent false negatives.",
+    "With false positives, the general likelihood includes Bin(n-H,FPR). Subtracting all reported positives from the stale count is unsafe unless positive repairs are confirmed and correct.",
+    "A full scan with a fallible judge can still leave false negatives. Withholding, exact external validation or a separately modeled settlement procedure is required."
+  ],
+  "exact_planning_calculations": {
+    "label": "Deterministic prospective design calculations, not held-out model outcomes.",
+    "arithmetic": "Python standard-library Fraction and math.comb, enumerating every K from 0 through 64 and k from 0 through 24 using the stated CDF.",
+    "N": 64,
+    "n": 24,
+    "delta": "1/20",
+    "tau": 6,
+    "rows": [
+      {
+        "q0": "1",
+        "Kplus_zero": 6,
+        "passing_k": [
+          0
+        ]
+      },
+      {
+        "q0": "99/100",
+        "Kplus_zero": 6,
+        "passing_k": [
+          0
+        ]
+      },
+      {
+        "q0": "19/20",
+        "Kplus_zero": 6,
+        "passing_k": [
+          0
+        ]
+      },
+      {
+        "q0": "9/10",
+        "Kplus_zero": 6,
+        "passing_k": [
+          0
+        ]
+      },
+      {
+        "q0": "4/5",
+        "Kplus_zero": 7,
+        "passing_k": []
+      },
+      {
+        "q0": "3/5",
+        "Kplus_zero": 11,
+        "passing_k": []
+      }
+    ],
+    "interpretation": "At this fixed budget and tolerance, q0=.8 or .6 admits no passing audit count. Safety may mean 100% withholding; do not tune the tolerance after inspecting results."
+  },
+  "counterexamples": [
+    {
+      "name": "Naive perfect-label gate with independent false negatives",
+      "N": 64,
+      "n": 24,
+      "true_K_after_first_phase": 7,
+      "true_independent_sensitivity": "4/5",
+      "naive_assumed_sensitivity": "1",
+      "delta": "1/20",
+      "tau": 6,
+      "release_event": "Y=0: naive Kplus(0)=6 passes, but K-Y=7 exceeds tau=6.",
+      "exact_probability": "112282502447/1516641093750",
+      "probability_decimal": 0.0740336674970172,
+      "meaning": "For this fixed batch, the naive gate exceeds 5% unconditional unsafe-release probability."
+    },
+    {
+      "name": "Marginal sensitivity does not replace independence",
+      "N": 64,
+      "n": 24,
+      "true_K_after_first_phase": 64,
+      "marginal_sensitivity": "9/10",
+      "noise_model": "One fresh shared Bernoulli switch Z with P(Z=1)=.9; every sampled stale claim is detected exactly when Z=1.",
+      "Y_distribution": {
+        "0": "1/10",
+        "24": "9/10"
+      },
+      "noiseaware_independence_bound_at_zero": 6,
+      "tau": 6,
+      "unsafe_release_probability": "1/10",
+      "meaning": "The independence-based gate can release 64 stale claims with probability 10%, despite marginal detection sensitivity .9 for each claim. This violates an assumption, not the conditional probability argument."
+    }
+  ],
+  "recommended_frozen_evaluation": {
+    "matched_arms": [
+      "No-certification diagnostic: first phase and the same audit sample; report residual counts without calling the outcome certified release.",
+      "Naive q1 gate: identical sample and detections, incorrectly assuming perfect labels; an intentionally misspecified comparator.",
+      "Known-q0 noise-aware gate: identical sample and detections, one prespecified look, otherwise withhold.",
+      "Perfect-detector q1 oracle: an explicit quality ceiling, not a matched real-judge arm."
+    ],
+    "matched_randomness": "Share the first-phase history, audit sample and actual detector realization across the first three arms; only bound interpretation differs.",
+    "primary_exact_checks": [
+      "Enumerate all K and feasible Y, checking maximum bound undercoverage and unsafe-release probability on a fixed rational sensitivity grid.",
+      "Verify q0=1 reduces to the ordinary hypergeometric bound and q0=0 gives a vacuous total count bound.",
+      "A census n=N with q<1 can retain stale claims. Do not treat it as perfect validation.",
+      "Compute gate pass probability by summing all passing Y states; residual bound Kplus(Y)-Y can be nonmonotone.",
+      "Underestimated q0 is conservative under the assumed model; an overestimated q0 is an explicit assumption violation.",
+      "Keep zero-release designs and withheld batches in their proper denominators."
+    ],
+    "stress_tests": [
+      "Independent homogeneous detection with known q.",
+      "Independent heterogeneous qi >= q0.",
+      "Actual sensitivity below claimed q0.",
+      "Shared all-or-none or clustered detector noise.",
+      "False-positive flags with and without independent confirmation.",
+      "Incorrect repairs or post-audit source changes: explicit assumption violations."
+    ],
+    "metrics": [
+      "Release and withhold frequencies.",
+      "Unsafe release overall and conditional on release, with distinct denominators.",
+      "All-current frequency and residual stale-count distribution.",
+      "Detector calls, including revisits, retries and first-phase calls when present.",
+      "Distinct inspected claims separately from detector-call counts.",
+      "Correct repairs, repair damage and calibration-label cost when applicable."
+    ],
+    "scope": "First validate exact known-noise operating characteristics, then measure actual judge error structure on independent adjudicated tasks. This does not demonstrate empirical LLM certification by itself."
+  },
+  "publication_position": "A controlled workspace-specific boundary study can implement existing misclassification-aware audit machinery and expose assumption failures. It establishes neither new statistical theory, first noisy-judge certification, nor production repair capability.",
+  "implementation_hazards": [
+    "False negatives invalidate the perfect-label support restriction K <= N-n+k; inversion must search K through N.",
+    "Fresh audit calls may revisit a first-phase claim. Charge every call and separately count distinct claim IDs; a 12+24 call pipeline does not inspect 36 distinct claims when sampling from all 64.",
+    "Do not implement release as a single low-count cutoff without checking every state. The independent reviewer found n=N=64,q0=.9,tau=6 passes Y=0..27 and Y=58..64, while intermediate Y can fail.",
+    "A standalone N=64 component sweep must not be described as the prior post-discovery N=52 pool or as an executed first-phase pipeline.",
+    "Exact arithmetic verifies operating characteristics under a declared detector model. It does not estimate an actual language model sensitivity."
+  ],
+  "independent_review_reference": "work/paper2_20261014/noisy_audit_design_review.json; read-only reviewed, not modified."
+}

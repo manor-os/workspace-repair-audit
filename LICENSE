@@ -1,4 +1,4 @@
-MIT License (research code in code/ only)
+MIT License (independently authored research Python code)
 
 Copyright (c) 2026 Fei Lin
 
@@ -20,7 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-This license applies to independently authored research code in code/.
+This license applies to independently authored research Python code in code/, diagnostics/ and extensions/.
 The manuscript, figures and generated data are excluded from this MIT grant.
 Copyright in those research materials is retained by Fei Lin.
 No Manor application implementation is distributed in this research package.

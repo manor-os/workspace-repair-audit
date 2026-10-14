@@ -1,0 +1,980 @@
+{
+  "case_count": 18,
+  "cases": [
+    {
+      "case_id": "budget_01",
+      "changed_sources_from_public_values": [
+        "F1"
+      ],
+      "changed_target_count": 10,
+      "domain": "budget",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 2,
+      "over_selected_ids": [
+        "C06",
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.16666666666666666,
+      "routed_count": 12,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.8333333333333334,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C06": {
+          "after": "7/8",
+          "before": "7/8"
+        },
+        "C12": {
+          "after": "0",
+          "before": "0"
+        }
+      }
+    },
+    {
+      "case_id": "budget_02",
+      "changed_sources_from_public_values": [
+        "F2"
+      ],
+      "changed_target_count": 9,
+      "domain": "budget",
+      "exact_rational_changed_target_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 0,
+      "over_selected_ids": [],
+      "over_selection_fraction_of_routed": 0.0,
+      "routed_count": 9,
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 1.0,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {}
+    },
+    {
+      "case_id": "budget_03",
+      "changed_sources_from_public_values": [
+        "F3"
+      ],
+      "changed_target_count": 7,
+      "domain": "budget",
+      "exact_rational_changed_target_ids": [
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.125,
+      "routed_count": 8,
+      "routed_ids": [
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.875,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "budget_04",
+      "changed_sources_from_public_values": [
+        "F4"
+      ],
+      "changed_target_count": 5,
+      "domain": "budget",
+      "exact_rational_changed_target_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.16666666666666666,
+      "routed_count": 6,
+      "routed_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.8333333333333334,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "budget_05",
+      "changed_sources_from_public_values": [
+        "F1"
+      ],
+      "changed_target_count": 10,
+      "domain": "budget",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 2,
+      "over_selected_ids": [
+        "C06",
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.16666666666666666,
+      "routed_count": 12,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.8333333333333334,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C06": {
+          "after": "13/6",
+          "before": "13/6"
+        },
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "budget_06",
+      "changed_sources_from_public_values": [
+        "F2"
+      ],
+      "changed_target_count": 8,
+      "domain": "budget",
+      "exact_rational_changed_target_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.1111111111111111,
+      "routed_count": 9,
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.8888888888888888,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "capacity_01",
+      "changed_sources_from_public_values": [
+        "F1"
+      ],
+      "changed_target_count": 5,
+      "domain": "capacity",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C04",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 7,
+      "over_selected_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.5833333333333334,
+      "routed_count": 12,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.4166666666666667,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C02": {
+          "after": "6",
+          "before": "6"
+        },
+        "C03": {
+          "after": "48",
+          "before": "48"
+        },
+        "C05": {
+          "after": "3900",
+          "before": "3900"
+        },
+        "C06": {
+          "after": "0",
+          "before": "0"
+        },
+        "C10": {
+          "after": "6",
+          "before": "6"
+        },
+        "C11": {
+          "after": "3900",
+          "before": "3900"
+        },
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "capacity_02",
+      "changed_sources_from_public_values": [
+        "F2"
+      ],
+      "changed_target_count": 7,
+      "domain": "capacity",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C02",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 3,
+      "over_selected_ids": [
+        "C03",
+        "C04",
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.3,
+      "routed_count": 10,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.7,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C03": {
+          "after": "144",
+          "before": "144"
+        },
+        "C04": {
+          "after": "0",
+          "before": "0"
+        },
+        "C12": {
+          "after": "0",
+          "before": "0"
+        }
+      }
+    },
+    {
+      "case_id": "capacity_03",
+      "changed_sources_from_public_values": [
+        "F3"
+      ],
+      "changed_target_count": 6,
+      "domain": "capacity",
+      "exact_rational_changed_target_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 2,
+      "over_selected_ids": [
+        "C06",
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.25,
+      "routed_count": 8,
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.75,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C06": {
+          "after": "0",
+          "before": "0"
+        },
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "capacity_04",
+      "changed_sources_from_public_values": [
+        "F4"
+      ],
+      "changed_target_count": 2,
+      "domain": "capacity",
+      "exact_rational_changed_target_ids": [
+        "C05",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 0,
+      "over_selected_ids": [],
+      "over_selection_fraction_of_routed": 0.0,
+      "routed_count": 2,
+      "routed_ids": [
+        "C05",
+        "C11"
+      ],
+      "routing_precision": 1.0,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {}
+    },
+    {
+      "case_id": "capacity_05",
+      "changed_sources_from_public_values": [
+        "F1"
+      ],
+      "changed_target_count": 5,
+      "domain": "capacity",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C04",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 7,
+      "over_selected_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.5833333333333334,
+      "routed_count": 12,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.4166666666666667,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C02": {
+          "after": "10",
+          "before": "10"
+        },
+        "C03": {
+          "after": "120",
+          "before": "120"
+        },
+        "C05": {
+          "after": "10500",
+          "before": "10500"
+        },
+        "C06": {
+          "after": "0",
+          "before": "0"
+        },
+        "C10": {
+          "after": "10",
+          "before": "10"
+        },
+        "C11": {
+          "after": "10500",
+          "before": "10500"
+        },
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "capacity_06",
+      "changed_sources_from_public_values": [
+        "F2"
+      ],
+      "changed_target_count": 9,
+      "domain": "capacity",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.1,
+      "routed_count": 10,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.9,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "0",
+          "before": "0"
+        }
+      }
+    },
+    {
+      "case_id": "pricing_01",
+      "changed_sources_from_public_values": [
+        "F1"
+      ],
+      "changed_target_count": 9,
+      "domain": "pricing",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.1,
+      "routed_count": 10,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.9,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "pricing_02",
+      "changed_sources_from_public_values": [
+        "F2"
+      ],
+      "changed_target_count": 7,
+      "domain": "pricing",
+      "exact_rational_changed_target_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.125,
+      "routed_count": 8,
+      "routed_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.875,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "pricing_03",
+      "changed_sources_from_public_values": [
+        "F3"
+      ],
+      "changed_target_count": 6,
+      "domain": "pricing",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C10"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 5,
+      "over_selected_ids": [
+        "C06",
+        "C07",
+        "C08",
+        "C11",
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.45454545454545453,
+      "routed_count": 11,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.5454545454545454,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C06": {
+          "after": "3220/89",
+          "before": "3220/89"
+        },
+        "C07": {
+          "after": "445/4",
+          "before": "445/4"
+        },
+        "C08": {
+          "after": "161/4",
+          "before": "161/4"
+        },
+        "C11": {
+          "after": "216/5",
+          "before": "216/5"
+        },
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "pricing_04",
+      "changed_sources_from_public_values": [
+        "F4"
+      ],
+      "changed_target_count": 7,
+      "domain": "pricing",
+      "exact_rational_changed_target_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.125,
+      "routed_count": 8,
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C12"
+      ],
+      "routing_precision": 0.875,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "pricing_05",
+      "changed_sources_from_public_values": [
+        "F1"
+      ],
+      "changed_target_count": 9,
+      "domain": "pricing",
+      "exact_rational_changed_target_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.1,
+      "routed_count": 10,
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.9,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    },
+    {
+      "case_id": "pricing_06",
+      "changed_sources_from_public_values": [
+        "F2"
+      ],
+      "changed_target_count": 7,
+      "domain": "pricing",
+      "exact_rational_changed_target_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "immediate_edges_exact": true,
+      "omitted_changed_count": 0,
+      "omitted_changed_ids": [],
+      "over_selected_count": 1,
+      "over_selected_ids": [
+        "C12"
+      ],
+      "over_selection_fraction_of_routed": 0.125,
+      "routed_count": 8,
+      "routed_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "routing_precision": 0.875,
+      "routing_recall": 1.0,
+      "unchanged_routed_values_exact": {
+        "C12": {
+          "after": "1",
+          "before": "1"
+        }
+      }
+    }
+  ],
+  "cases_with_over_selection": 16,
+  "claim_instances": 216,
+  "diagnostic": "Explicit public bracket-ID schema extraction on the existing prepared pilot",
+  "domain_summary": {
+    "budget": {
+      "cases": 6,
+      "exact_routing_cases": 1,
+      "omitted_changed_claim_instances": 0,
+      "over_selected_claim_instances": 7,
+      "rational_changed_claim_instances": 49,
+      "routed_claim_instances": 56,
+      "routing_precision": 0.875,
+      "routing_recall": 1.0
+    },
+    "capacity": {
+      "cases": 6,
+      "exact_routing_cases": 1,
+      "omitted_changed_claim_instances": 0,
+      "over_selected_claim_instances": 20,
+      "rational_changed_claim_instances": 34,
+      "routed_claim_instances": 54,
+      "routing_precision": 0.6296296296296297,
+      "routing_recall": 1.0
+    },
+    "pricing": {
+      "cases": 6,
+      "exact_routing_cases": 0,
+      "omitted_changed_claim_instances": 0,
+      "over_selected_claim_instances": 10,
+      "rational_changed_claim_instances": 45,
+      "routed_claim_instances": 55,
+      "routing_precision": 0.8181818181818182,
+      "routing_recall": 1.0
+    }
+  },
+  "exact_immediate_graph_cases": 18,
+  "exact_rational_changed_claim_instances": 128,
+  "exact_value_delta_routing_cases": 2,
+  "immediate_edges_micro": {
+    "exact": true,
+    "f1": 1.0,
+    "fn": 0,
+    "fp": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 408
+  },
+  "input_gold_sha256_used_post_prediction_only": "baed6c69733986e8ff6a29648af3e142ba2f07d5137dae75203e3ee211fcefb9",
+  "input_public_sha256": "ed16430cc0f4f1f9298655663a153d5bb0749ee83e49ab2d9c70e9a08aa869f5",
+  "limitations": [
+    "Existing prepared 18 cases reused; only three distinct rule contracts. This adds no independent benchmark or model evidence.",
+    "Each public rule names its target claim first and directly brackets every operand ID. Extraction reduces to schema tokenization.",
+    "No implicit, omitted, ambiguous or conflicting natural-language provenance is tested by this baseline.",
+    "The baseline does not parse arithmetic, compute repaired numeric values or make provider calls.",
+    "Immediate-edge exactness does not imply exact change routing: algebraic cancellation, unchanged threshold flags and dominated bottleneck branches can be reached without changing value.",
+    "Exact rational before/after targets are read only in the post-hoc diagnostic, after separate-process public predictions are persisted.",
+    "Frozen v0.1 artifacts and the existing scorer are read only; no published file is modified."
+  ],
+  "model_calls": 0,
+  "omitted_changed_claim_instances": 0,
+  "over_selected_claim_instances": 37,
+  "over_selection_fraction_of_routed": 0.22424242424242424,
+  "predictions_sha256": "1f1cf3106114c7f06e9938ac260f6928b54b3657741adbb57a92609e5a8f0f0d",
+  "routed_claim_instances": 165,
+  "routing_micro_precision": 0.7757575757575758,
+  "routing_micro_recall": 1.0,
+  "scorer_report_sha256": "a9c2534eaf1162bf09b1493c32aa814ec14060a9a1da77659fced01d10cf345e",
+  "unique_rule_contracts": 3,
+  "valid_schema_cases": 18
+}

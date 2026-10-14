@@ -8,14 +8,16 @@
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true,showstringspaces=false,frame=single,rulecolor=\color{black!20}}
 \setlength{\parskip}{4pt}
 \setlength{\parindent}{0pt}
+\clubpenalty=10000
+\widowpenalty=10000
 \newtheorem{proposition}{Proposition}
 \title{Auditing Selective Workspace Repair\\When Provenance Is Incomplete}
 \author{Fei Lin\\Manor AI}
-\date{October 14, 2026\\\small Research preprint, version 0.1; not peer reviewed}
+\date{October 14, 2026\\\small Research preprint, version 0.1.1; not peer reviewed}
 \begin{document}
 \maketitle
 \begin{abstract}
-Selective repair reuses unaffected work after source information changes, but observed provenance may omit relevant relationships or retain incorrect ones. We study checking outside that graph, separating heuristic discovery from a statistical release condition. A frozen executable-claim benchmark contains 360 generated base workspaces, four coupled provenance conditions and eight policies. Five policies use matched 36-call inspection budgets; a ranked excluded-pool audit adds full inspection when a known finite-population count bound fails. Across 1,440 workspace-condition instances, this gate averages 59.08 calls versus 64 for full inspection, saving 7.69\%. It triggers 1,187 fallbacks and yields six releases above the configured six-claim residual tolerance. Its 90.69\% all-current frequency is below the exact full-inspection diagnostic's 100\%. A complete replay is byte-identical. The contribution is a reproducible composition study, not new statistical theory or demonstrated language-model repair superiority. Validation and patches are idealized; actual model feasibility and production-integration limits are reported explicitly.
+Selective repair reuses unaffected work after source information changes, but observed provenance may omit relevant relationships or retain incorrect ones. We study checking outside that graph, separating heuristic discovery from a statistical release condition. A frozen executable-claim benchmark contains 360 generated base workspaces, four coupled provenance conditions and eight policies. Five policies use matched 36-call inspection budgets; a ranked excluded-pool audit adds full inspection when a known finite-population count bound fails. Across 1,440 workspace-condition instances, this gate averages 59.08 calls versus 64 for full inspection, saving 7.69\%. It triggers 1,187 fallbacks and yields six releases above the configured six-claim residual tolerance. Its 90.69\% all-current frequency is below the exact full-inspection diagnostic's 100\%. A complete replay is byte-identical. The contribution is a reproducible composition study, not new statistical theory or demonstrated language-model repair superiority. Validation and patches in the workspace benchmark are idealized. An added exact imperfect-detector study evaluates 3,250 parameter-policy scenarios: independent known-sensitivity bounds control unconditional unsafe certification, while overstated sensitivity and shared blind spots can violate it. A public parser also recovers all 18 prepared pilot graphs, exposing their explicit-schema ceiling. No successful model benchmark is reported.
 \end{abstract}
 \textbf{Keywords:} AI workspaces; provenance; selective repair; validation budgets; finite-population auditing.
 
@@ -31,7 +33,7 @@ The research question is narrow: under incomplete or incorrect observed provenan
 \section{Prior work and contribution boundary}
 CodePlan combines dependency analysis, change-impact analysis and adaptive planning for repository edits~\cite{codeplan}. LEDGER already uses typed dependencies, counterfactual language-model testing and consistency checks for document editing~\cite{ledger}. MemoRepair studies invalidated sources, withdrawal of derived artifacts, validated successors and cascade repair, including the consequences of missing provenance~\cite{memorepair}. BoardroomAI performs dependency-aware selective repair and explicitly tests missing edges~\cite{boardroom}. CAVERT concerns execution consistency and the evidence needed to diagnose and recover agent workflows~\cite{cavert}.
 
-Excluded-pool auditing, exact finite-population confidence bounds, and planned sequential selective-release audits also have direct precedents~\cite{coverage,selective}. We use a single planned look rather than introducing a new sequential procedure. Our contributions are: an executable benchmark separating observed lineage from actual value-delta obligations; a matched-cost comparison of graph, lexical, random and hybrid inspection policies; and a composition of ranked discovery, known auditing and explicit fallback whose residual-count interpretation can be checked from raw records. These contributions are bounded systems evidence, not demonstrated superiority over the full implementations of LEDGER or MemoRepair.
+Excluded-pool auditing, exact finite-population confidence bounds, and planned sequential selective-release audits also have direct precedents~\cite{coverage,selective}. We use a single planned look rather than introducing a new sequential procedure. Our contributions are: an executable benchmark separating observed lineage from actual value-delta obligations; a matched-cost comparison of graph, lexical, random and hybrid inspection policies; and a composition of ranked discovery, known auditing and explicit fallback whose residual-count interpretation can be checked from raw records. These contributions are bounded systems evidence, not demonstrated superiority over the full implementations of LEDGER or MemoRepair. Version 0.1.1 adds an imperfect-detector operating-characteristic study and an explicit-parser diagnostic; the original benchmark and its frozen records are retained unchanged.
 
 \section{Frozen-state repair contract}
 Let a frozen workspace contain sources $S^0$, updated sources $S^1$, and $m$ retained claim blocks $a_i^0$. A deterministic reference program $f_i$ defines the target value of each block. Its reference target is
@@ -136,7 +138,7 @@ The nominal bound is per fixed instance under uniform sampling, not a promise th
 \subsection{Exact checks, reproducibility and model feasibility}
 The exact small-population sanity check covers 819 $(N,n,K)$ combinations and 1,820 feasible count outcomes for $N\le12$, with maximum undercoverage probability $1/20$. Thirteen offline tests pass. An independent reviewer also enumerated the actual audit design $(N,n)=(52,24)$ across every feasible $K,k$: maximum bound undercoverage is approximately 0.04927 and maximum unsafe-release probability under the six-claim threshold is approximately 0.04189. These checks validate the known bound's implementation under ideal labels, not semantic inspection quality.
 
-A complete held-out rerun produces byte-identical detailed traces, CSV results, summaries and manifests. It adds no independent workspaces. The existing local Manor owner's selected model route was checked as BYOK. Two bounded synthetic routing smoke attempts did not yield a successful completion; the recorded diagnostic retry returned a BYOK provider HTTP 502 error. They are feasibility failures, not benchmark cases or model-performance observations. The main experiment has zero language-model calls and must be read as a routing/auditing prototype.
+A complete held-out rerun produces byte-identical detailed traces, CSV results, summaries and manifests. It adds no independent workspaces. The existing local Manor owner's selected model route was checked as BYOK. Two bounded synthetic routing smoke attempts did not yield a successful completion; the recorded diagnostic retry returned a BYOK provider HTTP 502 error. They are feasibility failures, not benchmark cases or model-performance observations. An additional bounded route check before this extension also returned HTTP 502 through the configured BYOK route. No successful model benchmark completion is added. The main experiment has zero language-model calls and must be read as a routing/auditing prototype.
 
 \begin{figure}[htbp]
 \centering
@@ -197,10 +199,126 @@ A complete held-out rerun produces byte-identical detailed traces, CSV results, 
 
 % END_AUTOGENERATED_RESULTS
 
+\section{Extension: auditing with a fallible detector}\label{sec:noisy}
+The original workspace experiment uses exact validation and ideal reference patches. This extension asks what changes when a validator can miss a stale claim. It is an executable probability-model stress test, not an experiment with an actual language-model judge. Finite-population inference with diagnostic misclassification already combines hypergeometric sampling and imperfect tests~\cite{misclassification}; calibrated imperfect-judge evaluation is also established~\cite{noisyvalid}. We adapt those known components to the residual count after detected claims are repaired. No new statistical method or theorem is claimed.
+
+\subsection{A separate, fixed-population experiment}
+Consider a frozen post-repair population of $N=64$ claims with $K$ remaining stale values before the audit. It can be the output of an arbitrary repair procedure; this component experiment does not execute such a procedure. Draw $n$ claims uniformly without replacement from the entire population. Let $H$ be the actual number of stale sampled claims and $Y$ the number detected. Assume no false positives, independent detection with known sensitivity $q$, fixed targets, and correct isolated repair of every detected claim. Then
+\begin{align}
+H&\sim\operatorname{Hypergeom}(N,K,n),\\
+Y\mid H=h&\sim\operatorname{Binom}(h,q),\\
+p_{K,q}(y)&=\sum_{h=\max(y,n-N+K)}^{\min(n,K)}
+ \frac{\binom Kh\binom{N-K}{n-h}}{\binom Nn}
+ \binom hy q^y(1-q)^{h-y}.\label{eq:noisy-pmf}
+\end{align}
+The residual after patching is $K-Y$. Importantly, it includes undetected stale claims \emph{inside} the inspected sample. Inspecting a claim is no longer equivalent to repairing it.
+
+For a declared sensitivity lower bound $q_0$ and one planned look, use the established exact-tail inversion
+\begin{equation}
+U_{q_0}(y)=\max\left\{K'\in\{y,\ldots,N\}:
+ \sum_{z=0}^{y}p_{K',q_0}(z)>\delta\right\},\quad
+B_{q_0}(y)=U_{q_0}(y)-y.\label{eq:noisy-bound}
+\end{equation}
+Here $\delta=0.05$, and the component gate certifies a residual count at most $\tau=6$ when $B_{q_0}(Y)\le6$; otherwise it withholds certification. There is no unreported perfect-validator fallback. The search must extend to $N$, because false negatives make the perfect-test restriction $K'\le N-n+y$ invalid. At $q_0=1$ the expression reduces to the original hypergeometric inversion. At $q_0=0$, $U=N$ supplies no information about the pre-audit total beyond the population size.
+
+Under independent detection with $q\ge q_0$, the true distribution has no larger lower-tail probabilities than the one used for inversion. Consequently $\Pr(K>U_{q_0}(Y))\le\delta$. Correctly patching the $Y$ true positives gives the residual bound $K-Y\le B_{q_0}(Y)$ on the same event. Thus the probability of certification with residual above six is at most $\delta$, unconditionally over the declared sampling and detector model. This is an application of existing inversion and stochastic ordering, not a claim of 95\% correctness conditional on certification. Known sensitivity, independence, zero false positives and correct patches are substantive assumptions; they are not supplied by a model's confidence statement.
+
+\subsection{Protocol and evidence}
+The locally recorded protocol fixes five sample sizes, $n\in\{16,24,36,48,64\}$, four detector sensitivities, $q\in\{1,0.9,0.7,0.5\}$, and every integer $K\in\{0,\ldots,64\}$. At matched $n,q,K$, the naive gate uses $q_0=1$ and the correctly specified gate uses $q_0=q$. Two assumption violations are separately identified: an overstated bound $q_0=0.9$ with independent actual sensitivity $q=0.7$, and a shared blind spot with marginal sensitivity $0.9$ but perfectly correlated detections. In the latter, a single Bernoulli draw makes the detector either identify every sampled stale claim or miss all of them. Its distribution is $0.9\Pr(H=y)+0.1\mathbf{1}[y=0]$.
+
+All 3,250 parameter-policy rows are computed by exact probability summation, not Monte Carlo trials or independent workspace cases. The analysis enumerates every feasible observed count $y$, recording its probability, bound, decision, and actual residual. It reports bound undercoverage $\Pr(K>U)$, certification probability, and unsafe certification $\Pr(B\le6,\ K-Y>6)$. Ratios conditional on certification, where defined, are descriptive quantities rather than the nominal guarantee. Because $U(y)-y$ need not be monotone in $y$, the calculation sums all passing outcomes rather than assuming a single tail cutoff. Rational detector probabilities and integer combinations avoid floating-point decisions at the strict $\delta$ boundary. A complete replay adds no independent evidence. Analytical anchors were explored during design; the recorded source/grid freeze precedes the full sweep, and is neither external preregistration nor an unseen-data evaluation.
+
+% BEGIN_NOISY_RESULTS
+\subsection{Exact operating characteristics}
+
+The complete sweep sums 68,984 feasible observed-count outcomes. Across all 1,300 correctly specified independent scenarios, neither bound undercoverage nor unsafe certification exceeds 0.05. The maximum undercoverage is 0.0499842; maximum unsafe certification is 0.0481443. These are maxima over the declared finite grid, not measured workload failure frequencies or a claim about every detector model.
+
+\begin{table}[ht]\centering\small
+
+\begin{tabular}{lrrrrr}\toprule
+
+Scenario & $K$ & $q$ & $q_0$ & Certify (\%) & Unsafe (\%)\\\midrule
+
+Perfect detector & 64 & 1 & 1 & 100.00 & 0.00 \\
+
+Naive perfect-test bound & 64 & 0.9 & 1 & 100.00 & 46.10 \\
+
+Known independent sensitivity & 64 & 0.9 & 0.9 & 53.90 & $<10^{-6}$ \\
+
+Known independent sensitivity & 34 & 0.9 & 0.9 & 4.81 & 4.81 \\
+
+Overstated sensitivity & 34 & 0.7 & 0.9 & 92.15 & 92.15 \\
+
+Shared detector blind spot & 64 & 0.9 & 0.9 & 100.00 & 10.00 \\
+
+\bottomrule\end{tabular}
+
+\caption{Selected fixed scenarios, all with $N=n=64$ and residual tolerance six. Unsafe means certification with more than six stale claims, unconditionally over detector randomness. The shared-blind-spot row violates independence; the overstated-sensitivity row violates $q\ge q_0$. Tiny nonzero probabilities are shown as an upper display threshold, not rounded to zero.}\label{tab:noisy}
+
+\end{table}
+
+With an imperfect detector, a census is not exact settlement. For the naive perfect-test bound at $n=N$, $U(Y)=Y$, so its residual bound is always zero and every outcome passes. With actual independent sensitivity 0.9 and $K=64$, the chance of leaving more than six stale claims is 0.4609612. With actual sensitivity 0.5, it is greater than 0.99999999999. These are controlled counterexamples to transferring the perfect-validator interpretation, not empirical model measurements.
+
+Correct specification has an availability cost. At sample size 16, no correctly specified case in this sensitivity grid can certify the six-claim tolerance, even when $K=0$. At sample size 24, sensitivities 0.7 and 0.5 also permit no certification at any observed count. Withholding is reported as withholding, not as successful repair.
+
+The unconditional denominator matters. In the correctly specified $n=64,K=34,q=0.9$ scenario, both certification and unsafe certification have probability 0.0481443. Thus all certified outcomes in this particular scenario are unsafe, despite satisfying the unconditional 0.05 control. This explicitly disproves interpreting the bound as 95\% correctness among passed audits.
+
+Overstating sensitivity can be much worse: at $n=64,K=34$, actual sensitivity 0.7 with assumed lower bound 0.9 yields unsafe certification probability 0.9214717. A shared all-or-none detector with marginal sensitivity 0.9 yields unsafe probability 0.1 at $K=64,n=64$. These intentionally violate calibration or independence. They do not refute the conditional assumptions of the exact bound. All result files in a complete replay are byte-identical; ten additional implementation tests pass.
+
+\begin{figure}[!htbp]\centering
+
+\begin{tikzpicture}\begin{axis}[width=0.93\linewidth,height=5.1cm,xlabel={True stale count before audit $K$},ylabel={Unsafe certification (\%)},xmin=0,xmax=64,xtick={0,8,16,24,32,40,48,56,64},ymin=0,ymax=104,grid=major,legend style={font=\scriptsize,at={(0.5,-0.26)},anchor=north,legend columns=1},label style={font=\small},tick label style={font=\small}]
+
+\addplot[color=gray,dashed,forget plot] coordinates {(0,5) (64,5)};
+
+\addplot[color=blue!70!black,solid,thick] coordinates {(0,0.000000000) (1,0.000000000) (2,0.000000000) (3,0.000000000) (4,0.000000000) (5,0.000000000) (6,0.000000000) (7,0.000010000) (8,0.000073000) (9,0.000299800) (10,0.000912160) (11,0.002289970) (12,0.005018034) (13,0.009928549) (14,0.018136123) (15,0.031063054) (16,0.050453449) (17,0.078375619) (18,0.117212818) (19,0.169643037) (20,0.238608941) (21,0.327279388) (22,0.439004152) (23,0.577263548) (24,0.745614694) (25,0.947636069) (26,1.186871908) (27,1.466777840) (28,1.790668990) (29,2.161671580) (30,2.582678866) (31,3.056312064) (32,3.584886712) (33,4.170384784) (34,4.814432663) (35,1.999023363) (36,0.767281794) (37,0.274585166) (38,0.092287414) (39,0.029311827) (40,0.008844761) (41,0.002547203) (42,0.000702917) (43,0.000186518) (44,0.000047735) (45,0.000011815) (46,0.000002835) (47,0.000000661) (48,0.000000150) (49,0.000000033) (50,0.000000007) (51,0.000000002) (52,0.000000000) (53,0.000000000) (54,0.000000000) (55,0.000000000) (56,0.000000000) (57,0.000000000) (58,0.000000000) (59,0.000000000) (60,0.000000000) (61,0.000000000) (62,0.000000000) (63,0.000000000) (64,0.000000000)};
+
+\addlegendentry{Known independent sensitivity}
+
+\addplot[color=red!70!black,dashed,thick] coordinates {(0,0.000000000) (1,0.000000000) (2,0.000000000) (3,0.000000000) (4,0.000000000) (5,0.000000000) (6,0.000000000) (7,0.000010000) (8,0.000073000) (9,0.000299800) (10,0.000912160) (11,0.002289970) (12,0.005018034) (13,0.009928549) (14,0.018136123) (15,0.031063054) (16,0.050453449) (17,0.078375619) (18,0.117212818) (19,0.169643037) (20,0.238608941) (21,0.327279388) (22,0.439004152) (23,0.577263548) (24,0.745614694) (25,0.947636069) (26,1.186871908) (27,1.466777840) (28,1.790668990) (29,2.161671580) (30,2.582678866) (31,3.056312064) (32,3.584886712) (33,4.170384784) (34,4.814432663) (35,5.518284988) (36,6.282814238) (37,7.108505827) (38,7.995458406) (39,8.943388974) (40,9.951642397) (41,11.019204844) (42,12.144720682) (43,13.326512311) (44,14.562602475) (45,15.850738540) (46,17.188418300) (47,18.572916852) (48,20.001314138) (49,21.470522775) (50,22.977315820) (51,24.518354160) (52,26.090213268) (53,27.689409056) (54,29.312422653) (55,30.955723920) (56,32.615793568) (57,34.289143773) (58,35.972337214) (59,37.662004476) (60,39.354859790) (61,41.047715104) (62,42.737492498) (63,44.421234974) (64,46.096115647)};
+
+\addlegendentry{Naive perfect-test bound}
+
+\addplot[color=violet,densely dotted,thick] coordinates {(0,0.000000000) (1,0.000000000) (2,0.000000000) (3,0.000000000) (4,0.000000000) (5,0.000000000) (6,0.000000000) (7,10.000000000) (8,10.000000000) (9,10.000000000) (10,10.000000000) (11,10.000000000) (12,10.000000000) (13,10.000000000) (14,10.000000000) (15,10.000000000) (16,10.000000000) (17,10.000000000) (18,10.000000000) (19,10.000000000) (20,10.000000000) (21,10.000000000) (22,10.000000000) (23,10.000000000) (24,10.000000000) (25,10.000000000) (26,10.000000000) (27,10.000000000) (28,10.000000000) (29,10.000000000) (30,10.000000000) (31,10.000000000) (32,10.000000000) (33,10.000000000) (34,10.000000000) (35,10.000000000) (36,10.000000000) (37,10.000000000) (38,10.000000000) (39,10.000000000) (40,10.000000000) (41,10.000000000) (42,10.000000000) (43,10.000000000) (44,10.000000000) (45,10.000000000) (46,10.000000000) (47,10.000000000) (48,10.000000000) (49,10.000000000) (50,10.000000000) (51,10.000000000) (52,10.000000000) (53,10.000000000) (54,10.000000000) (55,10.000000000) (56,10.000000000) (57,10.000000000) (58,10.000000000) (59,10.000000000) (60,10.000000000) (61,10.000000000) (62,10.000000000) (63,10.000000000) (64,10.000000000)};
+
+\addlegendentry{Shared blind spot (assumption violated)}
+
+\end{axis}\end{tikzpicture}
+
+\vspace{1.4cm}
+
+\begin{tikzpicture}\begin{axis}[width=0.93\linewidth,height=5.1cm,xlabel={True stale count before audit $K$},ylabel={Certification (\%)},xmin=0,xmax=64,xtick={0,8,16,24,32,40,48,56,64},ymin=0,ymax=104,grid=major,legend style={font=\scriptsize,at={(0.5,-0.26)},anchor=north,legend columns=1},label style={font=\small},tick label style={font=\small}]
+
+\addplot[color=blue!70!black,solid,thick] coordinates {(0,100.000000000) (1,100.000000000) (2,100.000000000) (3,100.000000000) (4,100.000000000) (5,100.000000000) (6,100.000000000) (7,100.000000000) (8,100.000000000) (9,100.000000000) (10,100.000000000) (11,100.000000000) (12,100.000000000) (13,100.000000000) (14,100.000000000) (15,100.000000000) (16,100.000000000) (17,100.000000000) (18,100.000000000) (19,100.000000000) (20,100.000000000) (21,100.000000000) (22,100.000000000) (23,100.000000000) (24,100.000000000) (25,100.000000000) (26,100.000000000) (27,100.000000000) (28,94.766523670) (29,80.112789945) (30,58.864876044) (31,37.616962143) (32,21.149828870) (33,10.610863575) (34,4.814432663) (35,1.999023363) (36,0.767281794) (37,0.274585166) (38,0.092287414) (39,0.029311827) (40,0.008844761) (41,0.002547203) (42,0.000702917) (43,0.000186518) (44,0.000047735) (45,0.000011815) (46,0.000002835) (47,0.000000661) (48,0.000000150) (49,0.000000033) (50,0.000000007) (51,0.000000002) (52,0.000000000) (53,0.000000000) (54,0.000000000) (55,0.000000000) (56,0.000000000) (57,0.000000000) (58,0.221853123) (59,1.508601239) (60,5.304508182) (61,12.896322066) (62,24.473838240) (63,38.829958295) (64,53.903884353)};
+
+\addlegendentry{Known independent sensitivity}
+
+\addplot[color=red!70!black,dashed,thick] coordinates {(0,100.000000000) (1,100.000000000) (2,100.000000000) (3,100.000000000) (4,100.000000000) (5,100.000000000) (6,100.000000000) (7,100.000000000) (8,100.000000000) (9,100.000000000) (10,100.000000000) (11,100.000000000) (12,100.000000000) (13,100.000000000) (14,100.000000000) (15,100.000000000) (16,100.000000000) (17,100.000000000) (18,100.000000000) (19,100.000000000) (20,100.000000000) (21,100.000000000) (22,100.000000000) (23,100.000000000) (24,100.000000000) (25,100.000000000) (26,100.000000000) (27,100.000000000) (28,100.000000000) (29,100.000000000) (30,100.000000000) (31,100.000000000) (32,100.000000000) (33,100.000000000) (34,100.000000000) (35,100.000000000) (36,100.000000000) (37,100.000000000) (38,100.000000000) (39,100.000000000) (40,100.000000000) (41,100.000000000) (42,100.000000000) (43,100.000000000) (44,100.000000000) (45,100.000000000) (46,100.000000000) (47,100.000000000) (48,100.000000000) (49,100.000000000) (50,100.000000000) (51,100.000000000) (52,100.000000000) (53,100.000000000) (54,100.000000000) (55,100.000000000) (56,100.000000000) (57,100.000000000) (58,100.000000000) (59,100.000000000) (60,100.000000000) (61,100.000000000) (62,100.000000000) (63,100.000000000) (64,100.000000000)};
+
+\addlegendentry{Naive perfect-test bound}
+
+\addplot[color=violet,densely dotted,thick] coordinates {(0,100.000000000) (1,100.000000000) (2,100.000000000) (3,100.000000000) (4,100.000000000) (5,100.000000000) (6,100.000000000) (7,100.000000000) (8,100.000000000) (9,100.000000000) (10,100.000000000) (11,100.000000000) (12,100.000000000) (13,100.000000000) (14,100.000000000) (15,100.000000000) (16,100.000000000) (17,100.000000000) (18,100.000000000) (19,100.000000000) (20,100.000000000) (21,100.000000000) (22,100.000000000) (23,100.000000000) (24,100.000000000) (25,100.000000000) (26,100.000000000) (27,100.000000000) (28,10.000000000) (29,10.000000000) (30,10.000000000) (31,10.000000000) (32,10.000000000) (33,10.000000000) (34,10.000000000) (35,10.000000000) (36,10.000000000) (37,10.000000000) (38,10.000000000) (39,10.000000000) (40,10.000000000) (41,10.000000000) (42,10.000000000) (43,10.000000000) (44,10.000000000) (45,10.000000000) (46,10.000000000) (47,10.000000000) (48,10.000000000) (49,10.000000000) (50,10.000000000) (51,10.000000000) (52,10.000000000) (53,10.000000000) (54,10.000000000) (55,10.000000000) (56,10.000000000) (57,10.000000000) (58,100.000000000) (59,100.000000000) (60,100.000000000) (61,100.000000000) (62,100.000000000) (63,100.000000000) (64,100.000000000)};
+
+\addlegendentry{Shared blind spot (assumption violated)}
+
+\end{axis}\end{tikzpicture}
+
+\vspace{1.4cm}
+
+\caption{Exact fixed-population operating characteristics with a full 64-claim audit, marginal sensitivity 0.9 and residual tolerance six. Top: unconditional unsafe certification. Bottom: certification probability, exposing withholding. Independent known-sensitivity correction and naive perfect-test interpretation use the same actual independent detector. The shared-blind-spot curve uses a different correlated detector with the same marginal sensitivity, intentionally violating the correction assumptions. These curves are probability-model calculations, not observed Manor model behavior.}\label{fig:noisy}
+
+\end{figure}\FloatBarrier
+% END_NOISY_RESULTS
+
+\subsection{Prepared model fixtures have an explicit-parser ceiling}
+A separate zero-model diagnostic reads only the public contracts in the existing 18 prepared pilot cases. Each rule explicitly brackets the target ID first and every direct operand afterward. Tokenizing those IDs recovers all 18 immediate dependency graphs exactly. The cases contain only three distinct rule contracts. This is an explicit-schema parsing ceiling, rather than evidence of implicit provenance discovery.
+
+Correct graph reachability identifies the exact changed-value set in only 2/18 cases. It selects 165 claim instances, of which 128 actually change under exact rational evaluation; 37 are conservatively selected but unchanged, and no changed target is omitted. The public predictions are persisted before evaluation against gold, and a separate replay is byte-identical. No model extraction or numeric repair is run. The diagnostic reinforces the distinction between correct edges and actual revision obligations, and establishes a mandatory simple baseline for any later model study.
+
 \section{Practical interpretation for Manor}
 The observed graph can prioritize work, but its completeness cannot be inferred from its own contents. A practical workspace controller needs to distinguish a heuristic candidate set from the condition under which other outputs may be reused. The study's gate makes that condition explicit, pays for additional validation and exposes fallback costs.
 
-The inspected Manor implementation has source/version hashes, artifact-to-Knowledge associations and task-delivery checks. An eventual integration could attach a versioned observed-provenance record to each retained block and gate publication against a frozen source/target scope. This study does not implement that integration. It does not establish that current Manor can perform cross-artifact dependency repair, resolve semantic human conflicts or enforce the paper's count certificate in production.
+The inspected Manor implementation has source/version hashes, artifact-to-Knowledge associations and task-delivery checks. An eventual integration could attach a versioned observed-provenance record to each retained block and gate publication against a frozen source/target scope. This study does not implement that integration. The noisy-detector extension further requires separating check completion from verified correctness: full inspection can still miss errors, and historical average judge accuracy does not establish independent sensitivity on a changed workspace. Correlated errors in language models have been documented independently~\cite{correlated}. The modeled detector parameters are controlled inputs, not estimates of Manor or any actual model. It does not establish that current Manor can perform cross-artifact dependency repair, resolve semantic human conflicts or enforce the paper's count certificate in production.
 
 \section{Limitations and publication status}
 The main study is synthetic and uses an idealized exact validator and reference repairer. Its unit is a scalar claim block, not a complete document or an autonomous agent action. The families are parameterizations of a common generator and do not establish broad domain generalization. Random edge deletion and insertion do not substitute for natural extraction errors. Generator-conditioned lexical signals, free graph work, and perfect patches can overstate the practical value of selection.
@@ -211,7 +329,7 @@ This version is an openly released research preprint and executable prototype, n
 
 \clearpage
 \section{Conclusion}
-Selective repair requires checking what an observed graph can omit. The executable study separates value-changing obligations from graph reachability, compares matched validation budgets, and measures the price of a declared residual-count audit and fallback policy. It provides a reproducible boundary study for persistent workspaces. Establishing a competitive autonomous repair method requires natural extraction failures and end-to-end model repair evidence beyond this prototype.
+Selective repair requires checking what an observed graph can omit. The executable study separates value-changing obligations from graph reachability, compares matched validation budgets, and measures the price of a declared residual-count audit and fallback policy. It provides a reproducible boundary study for persistent workspaces. The added detector study shows why validator accuracy and error dependence must be part of the contract: checking every claim does not certify every claim when detection is fallible. The prepared model fixtures have an explicit-parser ceiling and require a harder separately identified study before they can support a provenance-discovery claim. Establishing a competitive autonomous repair method requires natural extraction failures and end-to-end model repair evidence beyond this prototype.
 
 \appendix
 \section{Code and reproduction}
@@ -234,7 +352,19 @@ admissible = tail * delta.denominator > \
 \end{lstlisting}
 The full code in \texttt{code/benchmark.py} implements monotone inversion, public-only selection, exact validation accounting and the one-look gate. No tool output, source hash or confidence interval is a substitute for testing the assumptions of a production validator.
 
-\begin{thebibliography}{9}
+\section{Extension reproduction}
+The imperfect-detector experiment is a separate fixed-population component sweep, with no original workspace data or models required:
+\begin{lstlisting}[language=bash]
+python3 -B -m unittest discover \
+  -s extensions/noisy_audit/code -p 'test_*.py'
+python3 -B extensions/noisy_audit/code/noisy_audit.py run \
+  --protocol extensions/noisy_audit/protocol.json \
+  --out-dir extensions/noisy_audit/results_reproduction
+python3 -B code/update_noise_results.py
+\end{lstlisting}
+The original frozen code and data remain pinned separately. New exact outcome records contain rational probabilities, every feasible detected-positive count, the resulting bound, actual residual, and certification decision. The artifact also includes the public bracket-ID parser, its persisted predictions, unchanged scorer reports, and deterministic replay. To repeat that diagnostic, copy its script into an empty scratch directory and use its documented command-line arguments.
+
+\begin{thebibliography}{12}
 \bibitem{codeplan} R. Bairi et al. \emph{CodePlan: Repository-level Coding using LLMs and Planning}. FSE 2024. \url{https://arxiv.org/abs/2309.12499}.
 \bibitem{ledger} H. Wang et al. \emph{LEDGER: Scaling Agentic Document Editing with Dependency-aware Graph Retrieval}. Findings of ACL 2026. \url{https://aclanthology.org/2026.findings-acl.515/}.
 \bibitem{memorepair} \emph{MEMOREPAIR: Barrier-First Cascade Repair in Agentic Memory}. arXiv:2605.07242, 2026. \url{https://arxiv.org/abs/2605.07242}.
@@ -242,5 +372,8 @@ The full code in \texttt{code/benchmark.py} implements monotone inversion, publi
 \bibitem{cavert} Z. Yu et al. \emph{Beyond Corrected Memory: Execution Consistency in Multi-Agent Systems}. arXiv:2610.08101, 2026. \url{https://arxiv.org/abs/2610.08101}.
 \bibitem{coverage} \emph{Finite-Sample Coverage Audits for High-Recall Candidate Generation: Certification and Learning-Theoretic Design}. arXiv:2607.21480, 2026. \url{https://arxiv.org/abs/2607.21480}.
 \bibitem{selective} \emph{Exact Finite-Population Sequential Auditing for Selective Release from Model-Proposed Candidate Sets}. Mathematics 14(18), 3427, 2026. \url{https://doi.org/10.3390/math14183427}.
+\bibitem{misclassification} A. Mirzahosseini and J. Reiczigel. \emph{Prevalence Estimation in Finite Populations Adjusted for Misclassification}. Statistics in Biopharmaceutical Research, 2026. \url{https://doi.org/10.1080/19466315.2026.2656259}.
+\bibitem{noisyvalid} C. Feng et al. \emph{Noisy but Valid: Robust Statistical Evaluation of LLMs with Imperfect Judges}. ICLR 2026. \url{https://arxiv.org/abs/2601.20913}.
+\bibitem{correlated} E. M. Kim, A. Garg, K. Peng and N. Garg. \emph{Correlated Errors in Large Language Models}. ICML 2025, PMLR 267. \url{https://proceedings.mlr.press/v267/kim25e.html}.
 \end{thebibliography}
 \end{document}

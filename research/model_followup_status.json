@@ -1,0 +1,12 @@
+{
+  "checked_on": "2026-10-14",
+  "selected_model": "gpt-6.1-sol",
+  "effective_native_byok": true,
+  "returned_billing_mode": "byok",
+  "returned_api_key_source": "byok",
+  "provider_status": "HTTP 502",
+  "successful_benchmark_completions": 0,
+  "alternative_model_selected": false,
+  "user_choice": "Defer real model experiments until configured route recovers.",
+  "smoke_is_not_benchmark_case": true
+}

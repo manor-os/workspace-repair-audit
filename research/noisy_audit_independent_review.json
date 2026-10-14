@@ -1,0 +1,232 @@
+{
+  "code_and_protocol_hashes": {
+    "extensions/noisy_audit/code/noisy_audit.py": "9013cb82cbe9d7a8375c7119ece9b345c11028eaa0902498075606deb40edd2f",
+    "extensions/noisy_audit/code/test_noisy_audit.py": "be7451c2df8fdf35e2b82fe13623e7a339243e27e249079c52880b154fe3c1eb",
+    "extensions/noisy_audit/protocol.json": "8cc4211798bba11f5a980a74ea4fe93cfa5656ea115b84463c0222bf3faeda32"
+  },
+  "conditional_risk_anchor": {
+    "K": 34,
+    "N": 64,
+    "actual_q": "9/10",
+    "assumed_q0": "9/10",
+    "interpretation": "All passes are unsafe in this fixed scenario, even though unconditional unsafe-pass probability is below.05. Do not claim95% of passes are safe.",
+    "n": 64,
+    "policy": "calibrated_independent",
+    "unconditional_pass_probability_exact": "120360816572811813793263295008403/2500000000000000000000000000000000",
+    "unconditional_unsafe_pass_probability": 0.048144326629124726,
+    "unconditional_unsafe_pass_probability_exact": "120360816572811813793263295008403/2500000000000000000000000000000000",
+    "unsafe_probability_given_pass_exact": "1"
+  },
+  "final_format_only_hash_refresh": {
+    "SVG_change_is_format_metadata_only": true,
+    "all_390_scientific_data_coordinates_unchanged": true,
+    "changes": [
+      "Club/widow penalties10000",
+      "Noise figure float placement[p]to[!htbp]",
+      "Explicit x ticks including64",
+      "Dashed5% reference line, not a measured curve",
+      "Stable SVG identifiers and omitted timestamp"
+    ],
+    "date": "2026-10-14",
+    "extra_tests_or_full_study_runs": 0,
+    "frozen_code_protocol_and_primary_result_hashes_unchanged": true,
+    "generator_reversing_declared_plot_format_changes_exactly_matches_previous_reviewed_sha256": true,
+    "manuscript_reversing_declared_layout_changes_exactly_matches_previous_reviewed_sha256": true,
+    "native_compiler_status": "Reported successful by root; final PDF visual QA is performed by root, not attested by this source/figure hash refresh.",
+    "plot_data_JSON_byte_identical": true,
+    "previous_reviewed_hashes": {
+      "Manor_AI_Paper_2.tex": "310d54eb53e4d8a2bc3df6a19d5b70fd3a37179005c2134c520fa372499c7bdd",
+      "code/update_noise_results.py": "67e7a3e9514df7c147b995e30b0109f72365abb3824d3dd5225ac20d5809ba07",
+      "figures/noisy_audit.png": "d66c1175024147415b2b284b32ce3b17e35bb954cccd60a01edd1986fd10fe07",
+      "figures/noisy_audit.svg": "bb800a92252950139057d74b62483f56b365a29e885045a90d59cdef1b925cb7",
+      "figures/noisy_plot_data.json": "ad2f19f22fcee4114c3d5e5f8ac16719385acb278cf2bbf355e2b48a95059f4a"
+    },
+    "source_PNG_byte_identical": true,
+    "tables_and_scientific_prose_unchanged": true
+  },
+  "implementation_assessment": [
+    "PMF common-denominator formula correctly implements Hypergeometric sampling followed by independent Binomial detection.",
+    "The inverse searches true totals fromy toN and uses the correct strict-tail comparison; false negatives inside the sample remain inK-Y.",
+    "Shared all-or-none detector is correctly scored as q*Hypergeom+(1-q)*pointmass0.",
+    "BothU andU-Y are tracked; all feasibleY states contribute independently to pass/unsafe metrics.",
+    "Frozen analysis explicitly discloses design-anchor inspection; no unseen held-out data or external preregistration claimed."
+  ],
+  "limits": [
+    "No empirical model sensitivity is estimated or evaluated; q is a controlled parameter.",
+    "Calibrated guarantee requires independent FN-only detection, fixed labels, correct local repair and actualq>=q0.",
+    "Misspecified and correlated scenarios intentionally violate assumptions, so they demonstrate limits of invalid applications rather than failure of a valid theorem.",
+    "Risk is unconditional for each fixed parameter population, not conditional onpass or simultaneous over3250 scenarios.",
+    "Exact-sweep rows andYstates are mathematical operating characteristics, not observed user tasks, empirical frequencies or LLM outcomes.",
+    "No averaging overK is interpreted as an operational failure rate.",
+    "Withholding is not successful repair; release rate and cost must accompany risk.",
+    "Underlying inference machinery is known prior art; no statistical novelty claim."
+  ],
+  "manuscript_review": {
+    "abstract_and_conclusion_scope_accurate": true,
+    "calibration_and_independence_violations_labeled": true,
+    "conditional_risk_counterexample_explicit": true,
+    "extension_PMF_and_upper_bound_formulas_correct": true,
+    "main_pinned_artifacts_unchanged_relative_to_v01": [
+      "data/cases.jsonl",
+      "data/protocol.json",
+      "data/freeze_manifest.json",
+      "results_primary/summary.json",
+      "results_primary/detailed_results.jsonl.gz",
+      "results_primary/exact_coverage_sanity.json",
+      "results_primary/result_manifest.json",
+      "results_primary/results.csv",
+      "results_replay/summary.json",
+      "results_replay/detailed_results.jsonl.gz",
+      "results_replay/exact_coverage_sanity.json",
+      "results_replay/result_manifest.json",
+      "results_replay/results.csv",
+      "code/benchmark.py",
+      "code/test_benchmark.py",
+      "code/natural_pilot.py",
+      "code/test_natural_pilot.py"
+    ],
+    "naive_half_sensitivity_near_one_threshold_verified_exactly": true,
+    "no_new_statistics_or_actual_LLM_claim": true,
+    "noise_replay_files_byte_identical": {
+      "manifest.json": true,
+      "outcomes.jsonl.gz": true,
+      "results.csv": true,
+      "summary.json": true
+    },
+    "parser_fixture_counts_independently_confirmed_previously": {
+      "actually_changed_claim_instances": 128,
+      "conservative_unchanged_selected": 37,
+      "graphs_exact": 18,
+      "selected_claim_instances": 165,
+      "value_delta_route_exact": 2
+    },
+    "parser_replay_files_byte_identical": {
+      "diagnostic.json": true,
+      "parse_report.json": true,
+      "predictions.json": true,
+      "scorer_report.json": true
+    },
+    "plot_coordinate_count_verified_against_CSV": 390,
+    "residual_includes_within_sample_false_negatives": true,
+    "sample16_and_sample24_no_certification_claims_verified": true,
+    "selected_table_rows_and_display_threshold_match_exact_CSV": true
+  },
+  "new_manuscript_and_figure_hashes": {
+    "Manor_AI_Paper_2.tex": "d92a605aa5c1e334dfe0c5830502d09819c97d7fbb64fcff16ee6bcf1700a54d",
+    "code/update_noise_results.py": "c1f4619c251b22ca8433d9df8d6aac065a6647df8c96b5a82ab8c9ce3f2202b5",
+    "figures/noisy_audit.png": "d66c1175024147415b2b284b32ce3b17e35bb954cccd60a01edd1986fd10fe07",
+    "figures/noisy_audit.svg": "f6100327f696ab3c11f6822a954502633cae8f6deff8439bf2540667f9992195",
+    "figures/noisy_plot_data.json": "ad2f19f22fcee4114c3d5e5f8ac16719385acb278cf2bbf355e2b48a95059f4a"
+  },
+  "policy_checks": {
+    "calibrated_independent": {
+      "coverage_violations": 0,
+      "max_coverage_failure_exact": "4998419045192427814202129728553392011/100000000000000000000000000000000000000",
+      "max_coverage_scenario": {
+        "K": "39",
+        "actual_q": "7/10",
+        "assumed_q0": "7/10",
+        "n": "64"
+      },
+      "max_unsafe_pass_exact": "120360816572811813793263295008403/2500000000000000000000000000000000",
+      "max_unsafe_scenario": {
+        "K": "34",
+        "actual_q": "9/10",
+        "assumed_q0": "9/10",
+        "n": "64"
+      },
+      "rows": 1300,
+      "unsafe_violations": 0
+    },
+    "correlation_violation": {
+      "coverage_violations": 297,
+      "max_coverage_failure_exact": "115369467/905940280",
+      "max_coverage_scenario": {
+        "K": "11",
+        "actual_q": "9/10",
+        "assumed_q0": "9/10",
+        "n": "16"
+      },
+      "max_unsafe_pass_exact": "32875343/258840080",
+      "max_unsafe_scenario": {
+        "K": "7",
+        "actual_q": "9/10",
+        "assumed_q0": "9/10",
+        "n": "24"
+      },
+      "rows": 325,
+      "unsafe_violations": 232
+    },
+    "misspecified_sensitivity": {
+      "coverage_violations": 289,
+      "max_coverage_failure_exact": "992213716040375389055349595693042830047566768978990371181548117/1000000000000000000000000000000000000000000000000000000000000000",
+      "max_coverage_scenario": {
+        "K": "63",
+        "actual_q": "7/10",
+        "assumed_q0": "9/10",
+        "n": "64"
+      },
+      "max_unsafe_pass_exact": "2303679212179796952741356966264787/2500000000000000000000000000000000",
+      "max_unsafe_scenario": {
+        "K": "34",
+        "actual_q": "7/10",
+        "assumed_q0": "9/10",
+        "n": "64"
+      },
+      "rows": 325,
+      "unsafe_violations": 47
+    },
+    "naive_perfect_detector": {
+      "coverage_violations": 872,
+      "max_coverage_failure_exact": "18446744073709551615/18446744073709551616",
+      "max_coverage_scenario": {
+        "K": "64",
+        "actual_q": "1/2",
+        "assumed_q0": "1",
+        "n": "64"
+      },
+      "max_unsafe_pass_exact": "18446744073626273615/18446744073709551616",
+      "max_unsafe_scenario": {
+        "K": "64",
+        "actual_q": "1/2",
+        "assumed_q0": "1",
+        "n": "64"
+      },
+      "rows": 1300,
+      "unsafe_violations": 214
+    }
+  },
+  "primary_result_hashes": {
+    "extensions/noisy_audit/results_primary/manifest.json": "4a39422d6a5b1f54ac12ac68f5376aed713bfd695d8833f0f168249921fb8e15",
+    "extensions/noisy_audit/results_primary/outcomes.jsonl.gz": "fbbc764fc573f3f544fe7f244e01891c7395de30293aa6ce50af3fb6c4f890a7",
+    "extensions/noisy_audit/results_primary/results.csv": "e4b17b2dc348cd24b6ba18a272056212b3bf3ee360cb439860d554fb9667ff76",
+    "extensions/noisy_audit/results_primary/summary.json": "2bd0c2f4d3ac6da28dfa81b3011a9d42af38d2a093aed7ace3ef68be0b232cc0"
+  },
+  "remaining_release_checks": [
+    "Root final native PDF visual inspection and publication artifact hash verification."
+  ],
+  "review_scope": "Prospective math/code review, ten offline tests, read-only verification of every exact result/outcome row and frozen hashes. No second full parameter run, model calls or v0.1 edits.",
+  "reviewed_local_date": "2026-10-14",
+  "reviewer": "Independent automated reviewer /root/paper2_independent_review",
+  "schema_version": 1,
+  "status": "No substantive correctness blocker for accurately scoped v0.1.1 research preprint. Implementation, all exact results, extension formulas/claims, generated table/coordinates and source PNG reviewed. Final native PDF visual QA remains root responsibility.",
+  "tests": {
+    "additional_full_parameter_run_by_reviewer": false,
+    "command": "python3 -B -m unittest -v test_noisy_audit.py",
+    "failed": 0,
+    "passed": 10
+  },
+  "verified_result_integrity": {
+    "all_1300_calibrated_rows_have_coverage_and_unsafe_probability_at_most_delta": true,
+    "all_CSV_exact_values_match_outcome_sums": true,
+    "all_PMFs_normalize_exactly": true,
+    "all_expected_residuals_match_K_minus_nKq_over_N": true,
+    "all_outcome_flags_match_definitions": true,
+    "all_primary_manifest_hashes_match": true,
+    "all_y_states_enumerated_no_monotone_gate_shortcut": true,
+    "exact_feasible_y_states": 68984,
+    "parameter_policy_rows": 3250,
+    "protocol_and_code_frozen_hashes_match": true,
+    "unique_and_complete_grid": true
+  }
+}

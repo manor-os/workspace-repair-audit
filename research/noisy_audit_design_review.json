@@ -1,0 +1,155 @@
+{
+  "design_disposition": "Mathematically sound under declared fixed-population, independent FN-only detection, correct positive repairs, and known lower-bound sensitivity assumptions. Stress cases intentionally violate calibration or independence and must be labeled accordingly.",
+  "exact_risk_definitions": {
+    "conditional_unsafe_risk": "unsafe_pass_probability / pass_probability, undefined if pass_probability=0; not bounded by delta in general.",
+    "coverage_failure": "sum_y P_actual(Y=y|N,K,n) * 1[K>U_q0(y)]",
+    "expected_residual_sanity": "E[K-Y] = K*(1-(n/N)*q), also valid in the proposed all-or-none model with the same marginal q; equal means do not imply equal tail risks.",
+    "pass_probability": "sum_y P_actual(Y=y|N,K,n) * 1[U_q0(y)-y<=6]",
+    "unsafe_pass_probability": "sum_y P_actual(Y=y|N,K,n) * 1[U_q0(y)-y<=6 and K-y>6]",
+    "withhold_probability": "1-pass_probability"
+  },
+  "formal_model": {
+    "cdf": "F_q0(K,y) = sum_h [C(K,h) C(N-K,n-h) / C(N,n)] sum_j=0..min(y,h) C(h,j) q0^j (1-q0)^(h-j), with feasible h support.",
+    "detected_positive_count": "Y | H ~ Binomial(H,q); no false positives; all Y detected positives repaired correctly once.",
+    "population": "N claims; fixed latent stale count K in 0..N.",
+    "probability_claim": "For independent q>=q0, P(K>U_q0(Y))<=delta, and P(pass and K-Y>6)<=P(K>U_q0(Y))<=delta. This is unconditional over sampling and detector randomization for one fixed population.",
+    "residual_after_repair": "R = K - Y, including undetected stale claims INSIDE the audited sample.",
+    "residual_bound": "B(y)=U_q0(y)-y; pass iff B(y)<=6. Otherwise withhold; no hidden full-inspection fallback.",
+    "sample_latent_count": "H ~ Hypergeometric(N,K,n).",
+    "sampling": "Uniform without replacement of n distinct claims, independent of latent labels and detector draws.",
+    "upper_total": "U_q0(y) = max {K in [y,N] : F_q0(K,y) > delta}. Search y..N, not y..N-n+y, because false negatives invalidate the latter feasibility limit.",
+    "why_lower_sensitivity_bound_suffices": "Y is stochastically nondecreasing in q and K, so inversion using q0<=q is conservative. Marginal sensitivity alone without independence does not establish this distribution."
+  },
+  "implementation_hazards": [
+    {
+      "fix": "Search every K from observed y to N. Keep detector false negatives in residual K-Y.",
+      "issue": "Hypergeometric-only inversion limits K to N-n+y and falsely treats negative audit labels as certainly current.",
+      "priority": "high"
+    },
+    {
+      "fix": "Sum exact probabilities over every feasible Y state. Do not compute pass or unsafe risk using a single lower-tail cutoff.",
+      "issue": "The release gate can be nonmonotone in Y, even though U(Y) is monotone.",
+      "priority": "high"
+    },
+    {
+      "fix": "Include n=N anchors and label perfect-sensitivity assumptions explicitly; a census with fallible detection is not a perfect full scan.",
+      "issue": "q0=1 naive audit misinterprets a census as perfect validation when actual q<1.",
+      "priority": "high"
+    },
+    {
+      "fix": "Use actual mixture P(Y=y)=q*P(H=y)+(1-q)*1[y=0] when scoring. Do not score it with a binomial actual distribution or claim calibrated coverage applies.",
+      "issue": "An all-or-none detector has the correct marginal q but violates independent detection.",
+      "priority": "high"
+    },
+    {
+      "fix": "Declare q and q0 controlled simulation parameters. No inferred model sensitivity or semantic-validation guarantee. A future empirical calibration would need independent evidence and explicit calibration-error accounting.",
+      "issue": "A calibrated-q0 result requires q0 to be a valid known lower bound, not a point estimate from the same labels.",
+      "priority": "high"
+    },
+    {
+      "fix": "State this is an independent component study and do not imply the n64 row occurs after 12 discovery inspections in the old 64-claim workspace.",
+      "issue": "The prior main study used a post-discovery pool of 52; this component sweep uses a fresh pool N=64.",
+      "priority": "medium"
+    },
+    {
+      "fix": "Report pass and withhold probabilities alongside unsafe-pass risk; charge exactly n detector calls. Do not compare safety while hiding the lower release rate.",
+      "issue": "Withhold is an availability cost, not successful repair.",
+      "priority": "medium"
+    },
+    {
+      "fix": "Present K profiles and worst-K risk for each design. Label any uniform-K summary descriptive design averaging, never an operational failure rate.",
+      "issue": "Averaging K uniformly gives an arbitrary population model.",
+      "priority": "medium"
+    }
+  ],
+  "independent_n64_anchors": {
+    "correlated_all_or_none_q09_K64": {
+      "actual_detector": "Shared Bernoulli switch: all stale detections succeed with probability.9; all fail with probability.1.",
+      "assumed_bound_q0": "9/10 independent",
+      "assumption_violation": "Detector errors correlated despite marginal sensitivity.9.",
+      "coverage_failure": 0.1,
+      "pass_probability": 1.0,
+      "unsafe_pass_probability": 0.1,
+      "upper_when_global_failure": "U(0)=1; B=1<=6; unsafe pass."
+    },
+    "misspecified_q0_09_actual_q07": {
+      "assumption_violation": "q0=.9 is not a lower bound on actualq=.7.",
+      "at_K": 34,
+      "coverage_at_K": 63,
+      "max_coverage_failure_over_K": 0.9922137160403753,
+      "max_unsafe_pass_probability_over_K": 0.9214716848719188
+    },
+    "naive_q0_1_actual_q09_K64": {
+      "assumption_violation": "Detector sensitivity was assumed1 while actualq=.9.",
+      "coverage_failure": 0.9988209815422261,
+      "pass_probability": 1.0,
+      "unsafe_pass_probability": 0.46096115647168945,
+      "upper_total": "U(Y)=Y"
+    },
+    "q0_09_gate_pass_Y_values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64
+    ],
+    "q0_09_nonmonotonicity": "Y30 -> U37 -> B7 -> withhold; Y58 -> U64 -> B6 -> pass.",
+    "q0_09_upper_at_selected_y": {
+      "0": 1,
+      "10": 13,
+      "20": 25,
+      "27": 33,
+      "30": 37,
+      "40": 49,
+      "50": 60,
+      "58": 64,
+      "64": 64
+    }
+  },
+  "minimum_boundary_tests": [
+    "q0=1 reproduces the ordinary exact hypergeometric upper count.",
+    "q0=0 gives U=N for all valid y: total bound vacuous. B=N-y may still certify if y>=N-6; actualq=0 alwaysY0 and cannot pass forN64.",
+    "n=N,q=q0=1 gives Y=K,U=K,residual0, pass1, coverage failure0.",
+    "K=0 gives Y0, no unsafe release, but withholding may still occur because absence is not proved cheaply.",
+    "All PMFs sum exactly to1; all probabilities in[0,1]; unsafe<=pass; unsafe<=coverage event probability under the stated gate.",
+    "For all calibrated independent grid rows, exact coverage failure<=1/20 and unsafe pass<=1/20.",
+    "q, q0 outside[0,1] and impossible N,n,y reject; exact rational q values9/10,7/10,1/2 avoid floating cutoff errors.",
+    "No sample/detector Monte Carlo is used; a complete rerun produces byte-identical exact output.",
+    "Maximum possible y is min(K,n) under actual distributions; inversion still searches candidateK throughN."
+  ],
+  "publication_recommendation": "Freeze the component protocol and code before running; publish exact operating characteristics as a separately versioned study. Explain assumption violations, false-negative residuals and withholding costs in the abstract/results. It does not establish an empirical LLM improvement, novel theorem or production repair capability.",
+  "reviewed_local_date": "2026-10-14",
+  "reviewer": "Independent automated design reviewer /root/paper2_independent_review",
+  "schema_version": 1,
+  "study_scope": "Prospective noisy audit component extension; N=64 fixed latent binary staleness; no language-model calls, no empirical sensitivity estimate, no production validator inference, no new statistical theorem claim."
+}

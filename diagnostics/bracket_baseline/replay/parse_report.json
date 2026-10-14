@@ -1,0 +1,2679 @@
+{
+  "cases": [
+    {
+      "case_id": "budget_01",
+      "domain": "budget",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "F1",
+            "F2"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F3"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F4"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C01",
+            "C04"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C04",
+            "C01"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C01"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C07"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "C01"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F4"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C08",
+            "C10"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C11"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C11"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "5cab1d46cdd06f7ed599ced51ee84b5bf5730c0bc9c42434a186bf35a1f759e0"
+    },
+    {
+      "case_id": "budget_02",
+      "domain": "budget",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "F1",
+            "F2"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F3"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F4"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C01",
+            "C04"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C04",
+            "C01"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C01"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C07"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "C01"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F4"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C08",
+            "C10"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C11"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C11"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "5cab1d46cdd06f7ed599ced51ee84b5bf5730c0bc9c42434a186bf35a1f759e0"
+    },
+    {
+      "case_id": "budget_03",
+      "domain": "budget",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "F1",
+            "F2"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F3"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F4"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C01",
+            "C04"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C04",
+            "C01"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C01"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C07"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "C01"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F4"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C08",
+            "C10"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C11"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C11"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "5cab1d46cdd06f7ed599ced51ee84b5bf5730c0bc9c42434a186bf35a1f759e0"
+    },
+    {
+      "case_id": "budget_04",
+      "domain": "budget",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "F1",
+            "F2"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F3"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F4"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C01",
+            "C04"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C04",
+            "C01"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C01"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C07"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "C01"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F4"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C08",
+            "C10"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C11"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C11"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "5cab1d46cdd06f7ed599ced51ee84b5bf5730c0bc9c42434a186bf35a1f759e0"
+    },
+    {
+      "case_id": "budget_05",
+      "domain": "budget",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "F1",
+            "F2"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F3"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F4"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C01",
+            "C04"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C04",
+            "C01"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C01"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C07"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "C01"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F4"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C08",
+            "C10"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C11"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C11"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "5cab1d46cdd06f7ed599ced51ee84b5bf5730c0bc9c42434a186bf35a1f759e0"
+    },
+    {
+      "case_id": "budget_06",
+      "domain": "budget",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "F1",
+            "F2"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F3"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F4"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C01",
+            "C04"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C04",
+            "C01"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C01"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C07"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "C01"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2",
+            "F3"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F4"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C08",
+            "C10"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C11"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C11"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "5cab1d46cdd06f7ed599ced51ee84b5bf5730c0bc9c42434a186bf35a1f759e0"
+    },
+    {
+      "case_id": "capacity_01",
+      "domain": "capacity",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F2"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F3"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F2"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F1"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C02",
+            "F4"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C02",
+            "F3"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "F1"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "F1"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F3"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "F4"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C10",
+            "F3"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "1492c0b683d1da2241b7d9a6330180316fb308105ad2a35253fd6ff2886acb6d"
+    },
+    {
+      "case_id": "capacity_02",
+      "domain": "capacity",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F2"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F3"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F2"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F1"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C02",
+            "F4"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C02",
+            "F3"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "F1"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "F1"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F3"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "F4"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C10",
+            "F3"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "1492c0b683d1da2241b7d9a6330180316fb308105ad2a35253fd6ff2886acb6d"
+    },
+    {
+      "case_id": "capacity_03",
+      "domain": "capacity",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F2"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F3"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F2"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F1"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C02",
+            "F4"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C02",
+            "F3"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "F1"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "F1"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F3"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "F4"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C10",
+            "F3"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "1492c0b683d1da2241b7d9a6330180316fb308105ad2a35253fd6ff2886acb6d"
+    },
+    {
+      "case_id": "capacity_04",
+      "domain": "capacity",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F2"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F3"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F2"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F1"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C02",
+            "F4"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C02",
+            "F3"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "F1"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "F1"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F3"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "F4"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C10",
+            "F3"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "1492c0b683d1da2241b7d9a6330180316fb308105ad2a35253fd6ff2886acb6d"
+    },
+    {
+      "case_id": "capacity_05",
+      "domain": "capacity",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F2"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F3"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F2"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F1"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C02",
+            "F4"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C02",
+            "F3"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "F1"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "F1"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F3"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "F4"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C10",
+            "F3"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "1492c0b683d1da2241b7d9a6330180316fb308105ad2a35253fd6ff2886acb6d"
+    },
+    {
+      "case_id": "capacity_06",
+      "domain": "capacity",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F2"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F3"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "F2"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "C03",
+            "F1"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C02",
+            "F4"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C02",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C02",
+            "F3"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "F1"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F1"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "C07",
+            "F1"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C08",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "C08",
+            "F2"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C09",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C09",
+            "F3"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "F4"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C10",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C10",
+            "F3"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "1492c0b683d1da2241b7d9a6330180316fb308105ad2a35253fd6ff2886acb6d"
+    },
+    {
+      "case_id": "pricing_01",
+      "domain": "pricing",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F3"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F4"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C02"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "C01"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "F2",
+            "F3"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C04",
+            "C03"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C05",
+            "C03"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C03",
+            "F3"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "F2",
+            "C07"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "F2",
+            "F4"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C04",
+            "C01"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "C01"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C05"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "4b3757b7dd99cadfc798d763417d88650f91ea2db5e54e51b409096fa4466de1"
+    },
+    {
+      "case_id": "pricing_02",
+      "domain": "pricing",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F3"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F4"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C02"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "C01"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "F2",
+            "F3"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C04",
+            "C03"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C05",
+            "C03"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C03",
+            "F3"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "F2",
+            "C07"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "F2",
+            "F4"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C04",
+            "C01"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "C01"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C05"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "4b3757b7dd99cadfc798d763417d88650f91ea2db5e54e51b409096fa4466de1"
+    },
+    {
+      "case_id": "pricing_03",
+      "domain": "pricing",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F3"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F4"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C02"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "C01"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "F2",
+            "F3"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C04",
+            "C03"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C05",
+            "C03"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C03",
+            "F3"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "F2",
+            "C07"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "F2",
+            "F4"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C04",
+            "C01"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "C01"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C05"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "4b3757b7dd99cadfc798d763417d88650f91ea2db5e54e51b409096fa4466de1"
+    },
+    {
+      "case_id": "pricing_04",
+      "domain": "pricing",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F3"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F4"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C02"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "C01"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "F2",
+            "F3"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C04",
+            "C03"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C05",
+            "C03"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C03",
+            "F3"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "F2",
+            "C07"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "F2",
+            "F4"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C04",
+            "C01"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "C01"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C05"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "4b3757b7dd99cadfc798d763417d88650f91ea2db5e54e51b409096fa4466de1"
+    },
+    {
+      "case_id": "pricing_05",
+      "domain": "pricing",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F3"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F4"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C02"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "C01"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "F2",
+            "F3"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C04",
+            "C03"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C05",
+            "C03"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C03",
+            "F3"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "F2",
+            "C07"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "F2",
+            "F4"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C04",
+            "C01"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "C01"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C05"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "4b3757b7dd99cadfc798d763417d88650f91ea2db5e54e51b409096fa4466de1"
+    },
+    {
+      "case_id": "pricing_06",
+      "domain": "pricing",
+      "rules": [
+        {
+          "deduplicated_immediate_operands": [
+            "F1",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C01",
+            "F1",
+            "F3"
+          ],
+          "target": "C01"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C02",
+            "C01",
+            "F4"
+          ],
+          "target": "C02"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C02"
+          ],
+          "mentioned_ids_in_order": [
+            "C03",
+            "C02",
+            "C01"
+          ],
+          "target": "C03"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C04",
+            "F2",
+            "F3"
+          ],
+          "target": "C04"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C05",
+            "C04",
+            "C03"
+          ],
+          "target": "C05"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C06",
+            "C05",
+            "C03"
+          ],
+          "target": "C06"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C03",
+            "F3"
+          ],
+          "mentioned_ids_in_order": [
+            "C07",
+            "C03",
+            "F3"
+          ],
+          "target": "C07"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C07",
+            "F2"
+          ],
+          "mentioned_ids_in_order": [
+            "C08",
+            "F2",
+            "C07"
+          ],
+          "target": "C08"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "F2",
+            "F4"
+          ],
+          "mentioned_ids_in_order": [
+            "C09",
+            "F2",
+            "F4"
+          ],
+          "target": "C09"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C04"
+          ],
+          "mentioned_ids_in_order": [
+            "C10",
+            "C04",
+            "C01"
+          ],
+          "target": "C10"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C01",
+            "C10"
+          ],
+          "mentioned_ids_in_order": [
+            "C11",
+            "C10",
+            "C01"
+          ],
+          "target": "C11"
+        },
+        {
+          "deduplicated_immediate_operands": [
+            "C05"
+          ],
+          "mentioned_ids_in_order": [
+            "C12",
+            "C05"
+          ],
+          "target": "C12"
+        }
+      ],
+      "rules_sha256": "4b3757b7dd99cadfc798d763417d88650f91ea2db5e54e51b409096fa4466de1"
+    }
+  ],
+  "extractor_gold_open_guard": "Python audit hook rejects any file named gold.json in extraction process",
+  "formula_operators_parsed": false,
+  "model_calls": 0,
+  "public_input_sha256": "ed16430cc0f4f1f9298655663a153d5bb0749ee83e49ab2d9c70e9a08aa869f5",
+  "unique_rule_contracts": 3
+}

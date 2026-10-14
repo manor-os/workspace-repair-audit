@@ -1,0 +1,111 @@
+{
+  "claims_not_supported": [
+    "Competitive implicit-provenance discovery",
+    "New audit statistics",
+    "SOTA selective repair",
+    "Production Manor integration",
+    "Autonomous full-document semantic editing",
+    "Real customer data or independent human validation",
+    "Distribution-free guarantee from fallible model labels"
+  ],
+  "claims_supported_if_run": "Descriptive extraction/format/numeric-repair behavior of the pinned configured model on 18 explicit authored fixtures, with transparent baseline and cost decomposition.",
+  "disposition": "Usable as a bounded explicit-contract parsing and numeric repair integration pilot if protocol and arm bindings are frozen first. It cannot establish competitive implicit-dependency discovery or end-to-end production repair.",
+  "fairness_and_scoring": [
+    "Use identical model ID/version, configured endpoint, decoding parameters, context, response budget and numeric tolerance across repair arms; preserve completion metadata and usage. The existing 2500-token response cap must remain fixed unless a new version is frozen.",
+    "Randomize or interleave prespecified arm/case order to reduce endpoint drift, using a logged seed. Do not rerun only bad outputs or tune prompts after observing held-out outcomes.",
+    "Report all-final-12-current, selected-value correctness, residual changed claims, changed-value routing false negatives and unneeded selections, schema validity, fallback rate and total token/call cost. Distinguish emitted extra update keys from omitted required keys.",
+    "A malformed extraction graph can have useful partial edges, but descriptive partial-edge scores must not turn a schema-invalid result into successful autonomous execution.",
+    "The numeric-only update application preserves human notes and unselected blocks by construction; do not claim semantic editing or preservation ability. Mixed markdown/csv/json inputs remain structured synthetic numeric fragments.",
+    "Compute changed_sources for selection from public before_sources and after_sources. Reading evaluator/gold.json is allowed only for the final scorer, not the extraction, selection or repair runner.",
+    "No live successful completion is currently present. Keep results pending while the configured BYOK route is unavailable; do not replace the user-approved route or use another billing route implicitly."
+  ],
+  "offline_public_only_baseline": {
+    "cases": 18,
+    "correct_graph_exact_value_delta_routing_cases": 2,
+    "description": "For each public English rule, extract bracketed IDs; first ID is target; remaining unique IDs are immediate operands. No evaluator expressions or value-delta labels are consulted by this selector.",
+    "exact_dependency_graph_cases": 18,
+    "interpretation": "All dependency graphs are explicit in the public ID-tagged rules. Even perfect graph extraction overselects numerically invariant descendants; this is not an extraction error.",
+    "mean_exact_value_changed_size": 7.111111111111111,
+    "mean_true_graph_route_size": 9.166666666666666,
+    "micro_edge_precision": 1.0,
+    "micro_edge_recall": 1.0,
+    "regex": "\\[((?:C\\d{2})|(?:F[1-4]))\\]"
+  },
+  "publication_boundary": "Preserve published v0.1. Publish a separately versioned v0.2 only after actual raw case responses exist and the bounded pilot is accurately scored; otherwise publish only a prospective protocol and availability record.",
+  "read_only_source_sha256": {
+    "code/natural_pilot.py": "17e8610e0e1ae2daf487c0a1424f6b184c7ce3ecfec0fb3ad603152225a5364e",
+    "code/test_natural_pilot.py": "72e259c8195c35008195357c32751f6ce3620bf7e1fe698e618fa2c21a86cd13",
+    "pilot_prepared/evaluator/gold.json": "baed6c69733986e8ff6a29648af3e142ba2f07d5137dae75203e3ee211fcefb9",
+    "pilot_prepared/protocol.json": "6427f55f2272be9363a7a90d880267ab54839e6c813247b24ddee16645f29f99",
+    "pilot_prepared/public/inputs.json": "ed16430cc0f4f1f9298655663a153d5bb0749ee83e49ab2d9c70e9a08aa869f5",
+    "pilot_prepared/status.json": "2b9e73cce57ef7398e46af6cc611038770e5fc83f36c15c325099c50fa109578"
+  },
+  "recommended_minimum_arms": [
+    {
+      "arm": "full_numeric_recompute",
+      "purpose": "Strong no-extraction end-to-end comparator; one repair call per case plus declared retries.",
+      "selection": "All 12 claims from the same public contract and current source facts."
+    },
+    {
+      "arm": "public_parser_graph_then_model_repair",
+      "purpose": "No-model extraction ceiling and numeric-repair comparator; graph construction cost explicitly zero model calls.",
+      "selection": "Public-only bracket-ID parser reachability from public source diff."
+    },
+    {
+      "arm": "model_graph_then_model_repair",
+      "purpose": "Measures practical consequences of extraction errors, with same repair prompt/model budget as parser arm.",
+      "selection": "Reachability through the model-extracted graph using the same public source diff."
+    },
+    {
+      "arm": "oracle_diagnostics_optional",
+      "purpose": "Decomposes selector versus repair errors; does not count as autonomous method performance.",
+      "selection": "Evaluator true graph or exact changed IDs, clearly marked evaluator-assisted."
+    }
+  ],
+  "required_protocol_fixes": [
+    {
+      "action": "Include the public-only regex parser as a mandatory zero-model baseline. Describe this pilot as explicit-contract extraction and numeric repair. If implicit provenance is the goal, design a separately versioned later dataset with genuinely untagged dependencies; do not silently alter these frozen fixtures.",
+      "issue": "The authored English contract directly encodes every immediate dependency; model extraction is dominated by a trivial parser on these fixtures.",
+      "priority": "high"
+    },
+    {
+      "action": "Before any repair call, log method, extracted graph, public before/after source diff, selected IDs and prompt hash. Enforce selected_ids == the prespecified public-only policy output. Keep exact_affected_ids evaluator-only. Label any oracle-selection or oracle-repair arm diagnostic and exclude it from autonomous model claims.",
+      "issue": "The current repair scorer accepts arbitrary selected_ids and does not bind them to a declared policy or extracted graph. Gold-derived exact_affected_ids could therefore give the repair arm oracle selection.",
+      "priority": "high"
+    },
+    {
+      "action": "Report immediate-edge precision/recall/exactness separately from changed-value routing precision/recall and final numeric correctness. A true-edge descendant that is numerically unchanged is conservative over-selection, not a missing/wrong extracted edge. Report both model-graph and public-parser-graph routes to isolate model extraction damage.",
+      "issue": "Extraction fidelity, structural impact coverage and numeric repair quality answer different questions.",
+      "priority": "high"
+    },
+    {
+      "action": "Charge all extraction, validation, repair, retry and fallback calls plus actual input/output tokens. Report cold-start total cost for this one-update pilot. Report warm reuse only as a separately declared scenario. Do not infer savings from fewer selected IDs alone; the selective arm may cost more.",
+      "issue": "A selective repair arm uses an extraction call in addition to a repair call, while full recomputation can use one repair call. Shared full contract/context is supplied to every repair.",
+      "priority": "high"
+    },
+    {
+      "action": "Either omit audit certification from this small pilot or freeze new d,n,tau,delta and explicitly use an oracle diagnostic. Never transfer the 64-claim parameters or count guarantee to model labels. If model validation is added, measure false negatives separately and present empirical results without the known-oracle certificate.",
+      "issue": "The main-study exact audit guarantee assumes oracle labels; a semantic model validator can miss stale claims. The 12-claim pilot also has a different audit population.",
+      "priority": "high"
+    },
+    {
+      "action": "Freeze one bounded retry rule and distinguish not_run, provider_error, timeout, malformed_JSON, schema_invalid and valid_wrong. Do not drop failures from all-case end-to-end denominator. Report attempted, successful and valid counts separately. If extraction failure triggers full recomputation, preserve and charge that fallback. An unsuccessful preflight with zero attempted case calls is availability evidence, not 18 failed model cases.",
+      "issue": "Failure classes and denominators need a live runner rather than relying only on the scorer.",
+      "priority": "medium"
+    },
+    {
+      "action": "For v0.2 pin and verify runner, scorer, prompts, prepared protocol and input hashes before calls. Preserve v0.1 untouched; any scorer change belongs in a new study directory/version. Keep immutable raw responses and score them after collection with the pinned evaluator.",
+      "issue": "The published scorer records implementation_sha256 but load_prepared verifies only input/gold hashes, not evaluator implementation bytes.",
+      "priority": "medium"
+    },
+    {
+      "action": "Use descriptive all-18 and per-family outcomes. Do not call this held-out domain generalization, natural business-workspace extraction, production use or a population success estimate. Multiple repetitions or future models do not create new independent templates.",
+      "issue": "Six numeric variations share the same verbal contract per family; the set contains three authored templates rather than independent business tasks.",
+      "priority": "medium"
+    }
+  ],
+  "reviewed_local_date": "2026-10-14",
+  "reviewer": "Independent automated protocol reviewer /root/paper2_independent_review",
+  "schema_version": 1,
+  "scope": "Prospective v0.2 protocol review of the frozen 18-case natural-language fixture pilot. No model calls, no published v0.1 edits, and no performance outcome inferred."
+}

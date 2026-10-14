@@ -1,18 +1,13 @@
 {
-  "authorized_by": "User explicitly requested writing papers one by one with experiments, formulas, code, figures and publication on 2026-10-14.",
-  "current_paper_scope": "One next paper on incomplete provenance and selective workspace repair.",
-  "target": "New dedicated public research artifact repository under the verified manor-os GitHub organization; v0.1 research preprint release.",
-  "target_is_peer_reviewed": false,
-  "journal_submission_or_acceptance_claimed": false,
-  "application_source_or_earlier_patent_material_to_be_published": false,
-  "minimum_release_checks": [
-    "Executable code and raw data",
-    "Formula and conditional assumptions checked",
-    "Figures generated from raw results",
-    "LaTeX compilation and PDF visual review",
-    "Independent code and claim review",
-    "Secret/private-data allowlist review",
-    "Remote release and artifact hashes verified"
-  ],
-  "earlier_paper1_tex_modified": false
+  "version": "0.1.1",
+  "authorized_by": "User requested papers with experiments, formulas, code, figures and publication; latest choice defers real models until configured route recovers.",
+  "target_repository": "https://github.com/manor-os/workspace-repair-audit",
+  "tag": "v0.1.1",
+  "scope": "Supplement to existing synthetic research preprint; exact imperfect-detector operating characteristics and explicit-parser baseline diagnostic.",
+  "peer_reviewed": false,
+  "journal_submission_or_acceptance": false,
+  "v01_pinned_experiment_bytes_retained": true,
+  "application_source_or_customer_records_included": false,
+  "paper1_editor_or_source_modified": false,
+  "new_successful_model_benchmark_completions": 0
 }

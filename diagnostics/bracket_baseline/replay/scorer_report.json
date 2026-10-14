@@ -1,0 +1,1734 @@
+{
+  "schema_version": 1,
+  "prepared_protocol_sha256": "6427f55f2272be9363a7a90d880267ab54839e6c813247b24ddee16645f29f99",
+  "responses_sha256": "1f1cf3106114c7f06e9938ac260f6928b54b3657741adbb57a92609e5a8f0f0d",
+  "case_count": 18,
+  "valid_response_count": 18,
+  "immediate_edges_micro": {
+    "tp": 408,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "exact": true
+  },
+  "exact_graph_case_count": 18,
+  "exact_changed_value_routing_case_count": 2,
+  "cases": [
+    {
+      "case_id": "budget_01",
+      "domain": "budget",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1"
+        ],
+        "C02": [
+          "F1",
+          "F2"
+        ],
+        "C03": [
+          "C02",
+          "F3"
+        ],
+        "C04": [
+          "C03",
+          "F4"
+        ],
+        "C05": [
+          "C01",
+          "C04"
+        ],
+        "C06": [
+          "C01",
+          "C04"
+        ],
+        "C07": [
+          "C01"
+        ],
+        "C08": [
+          "C01",
+          "C07"
+        ],
+        "C09": [
+          "C08",
+          "F2",
+          "F3"
+        ],
+        "C10": [
+          "C09",
+          "F4"
+        ],
+        "C11": [
+          "C08",
+          "C10"
+        ],
+        "C12": [
+          "C11"
+        ]
+      },
+      "edges": {
+        "tp": 22,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 10,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "budget_02",
+      "domain": "budget",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1"
+        ],
+        "C02": [
+          "F1",
+          "F2"
+        ],
+        "C03": [
+          "C02",
+          "F3"
+        ],
+        "C04": [
+          "C03",
+          "F4"
+        ],
+        "C05": [
+          "C01",
+          "C04"
+        ],
+        "C06": [
+          "C01",
+          "C04"
+        ],
+        "C07": [
+          "C01"
+        ],
+        "C08": [
+          "C01",
+          "C07"
+        ],
+        "C09": [
+          "C08",
+          "F2",
+          "F3"
+        ],
+        "C10": [
+          "C09",
+          "F4"
+        ],
+        "C11": [
+          "C08",
+          "C10"
+        ],
+        "C12": [
+          "C11"
+        ]
+      },
+      "edges": {
+        "tp": 22,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "changed_value_routing": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      }
+    },
+    {
+      "case_id": "budget_03",
+      "domain": "budget",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1"
+        ],
+        "C02": [
+          "F1",
+          "F2"
+        ],
+        "C03": [
+          "C02",
+          "F3"
+        ],
+        "C04": [
+          "C03",
+          "F4"
+        ],
+        "C05": [
+          "C01",
+          "C04"
+        ],
+        "C06": [
+          "C01",
+          "C04"
+        ],
+        "C07": [
+          "C01"
+        ],
+        "C08": [
+          "C01",
+          "C07"
+        ],
+        "C09": [
+          "C08",
+          "F2",
+          "F3"
+        ],
+        "C10": [
+          "C09",
+          "F4"
+        ],
+        "C11": [
+          "C08",
+          "C10"
+        ],
+        "C12": [
+          "C11"
+        ]
+      },
+      "edges": {
+        "tp": 22,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 7,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.875,
+        "recall": 1.0,
+        "f1": 0.9333333333333333,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "budget_04",
+      "domain": "budget",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1"
+        ],
+        "C02": [
+          "F1",
+          "F2"
+        ],
+        "C03": [
+          "C02",
+          "F3"
+        ],
+        "C04": [
+          "C03",
+          "F4"
+        ],
+        "C05": [
+          "C01",
+          "C04"
+        ],
+        "C06": [
+          "C01",
+          "C04"
+        ],
+        "C07": [
+          "C01"
+        ],
+        "C08": [
+          "C01",
+          "C07"
+        ],
+        "C09": [
+          "C08",
+          "F2",
+          "F3"
+        ],
+        "C10": [
+          "C09",
+          "F4"
+        ],
+        "C11": [
+          "C08",
+          "C10"
+        ],
+        "C12": [
+          "C11"
+        ]
+      },
+      "edges": {
+        "tp": 22,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "budget_05",
+      "domain": "budget",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1"
+        ],
+        "C02": [
+          "F1",
+          "F2"
+        ],
+        "C03": [
+          "C02",
+          "F3"
+        ],
+        "C04": [
+          "C03",
+          "F4"
+        ],
+        "C05": [
+          "C01",
+          "C04"
+        ],
+        "C06": [
+          "C01",
+          "C04"
+        ],
+        "C07": [
+          "C01"
+        ],
+        "C08": [
+          "C01",
+          "C07"
+        ],
+        "C09": [
+          "C08",
+          "F2",
+          "F3"
+        ],
+        "C10": [
+          "C09",
+          "F4"
+        ],
+        "C11": [
+          "C08",
+          "C10"
+        ],
+        "C12": [
+          "C11"
+        ]
+      },
+      "edges": {
+        "tp": 22,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 10,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "budget_06",
+      "domain": "budget",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1"
+        ],
+        "C02": [
+          "F1",
+          "F2"
+        ],
+        "C03": [
+          "C02",
+          "F3"
+        ],
+        "C04": [
+          "C03",
+          "F4"
+        ],
+        "C05": [
+          "C01",
+          "C04"
+        ],
+        "C06": [
+          "C01",
+          "C04"
+        ],
+        "C07": [
+          "C01"
+        ],
+        "C08": [
+          "C01",
+          "C07"
+        ],
+        "C09": [
+          "C08",
+          "F2",
+          "F3"
+        ],
+        "C10": [
+          "C09",
+          "F4"
+        ],
+        "C11": [
+          "C08",
+          "C10"
+        ],
+        "C12": [
+          "C11"
+        ]
+      },
+      "edges": {
+        "tp": 22,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 8,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.8888888888888888,
+        "recall": 1.0,
+        "f1": 0.9411764705882353,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "capacity_01",
+      "domain": "capacity",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F2"
+        ],
+        "C02": [
+          "C01",
+          "F3"
+        ],
+        "C03": [
+          "C02",
+          "F2"
+        ],
+        "C04": [
+          "C03",
+          "F1"
+        ],
+        "C05": [
+          "C02",
+          "F4"
+        ],
+        "C06": [
+          "C02",
+          "F3"
+        ],
+        "C07": [
+          "F1"
+        ],
+        "C08": [
+          "C07",
+          "F1"
+        ],
+        "C09": [
+          "C08",
+          "F2"
+        ],
+        "C10": [
+          "C09",
+          "F3"
+        ],
+        "C11": [
+          "C10",
+          "F4"
+        ],
+        "C12": [
+          "C10",
+          "F3"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C04",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "changed_value_routing": {
+        "tp": 5,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.4166666666666667,
+        "recall": 1.0,
+        "f1": 0.5882352941176471,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "capacity_02",
+      "domain": "capacity",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F2"
+        ],
+        "C02": [
+          "C01",
+          "F3"
+        ],
+        "C03": [
+          "C02",
+          "F2"
+        ],
+        "C04": [
+          "C03",
+          "F1"
+        ],
+        "C05": [
+          "C02",
+          "F4"
+        ],
+        "C06": [
+          "C02",
+          "F3"
+        ],
+        "C07": [
+          "F1"
+        ],
+        "C08": [
+          "C07",
+          "F1"
+        ],
+        "C09": [
+          "C08",
+          "F2"
+        ],
+        "C10": [
+          "C09",
+          "F3"
+        ],
+        "C11": [
+          "C10",
+          "F4"
+        ],
+        "C12": [
+          "C10",
+          "F3"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C02",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 7,
+        "fp": 3,
+        "fn": 0,
+        "precision": 0.7,
+        "recall": 1.0,
+        "f1": 0.8235294117647058,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "capacity_03",
+      "domain": "capacity",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F2"
+        ],
+        "C02": [
+          "C01",
+          "F3"
+        ],
+        "C03": [
+          "C02",
+          "F2"
+        ],
+        "C04": [
+          "C03",
+          "F1"
+        ],
+        "C05": [
+          "C02",
+          "F4"
+        ],
+        "C06": [
+          "C02",
+          "F3"
+        ],
+        "C07": [
+          "F1"
+        ],
+        "C08": [
+          "C07",
+          "F1"
+        ],
+        "C09": [
+          "C08",
+          "F2"
+        ],
+        "C10": [
+          "C09",
+          "F3"
+        ],
+        "C11": [
+          "C10",
+          "F4"
+        ],
+        "C12": [
+          "C10",
+          "F3"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 6,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "capacity_04",
+      "domain": "capacity",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F2"
+        ],
+        "C02": [
+          "C01",
+          "F3"
+        ],
+        "C03": [
+          "C02",
+          "F2"
+        ],
+        "C04": [
+          "C03",
+          "F1"
+        ],
+        "C05": [
+          "C02",
+          "F4"
+        ],
+        "C06": [
+          "C02",
+          "F3"
+        ],
+        "C07": [
+          "F1"
+        ],
+        "C08": [
+          "C07",
+          "F1"
+        ],
+        "C09": [
+          "C08",
+          "F2"
+        ],
+        "C10": [
+          "C09",
+          "F3"
+        ],
+        "C11": [
+          "C10",
+          "F4"
+        ],
+        "C12": [
+          "C10",
+          "F3"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C05",
+        "C11"
+      ],
+      "exact_affected_ids": [
+        "C05",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      }
+    },
+    {
+      "case_id": "capacity_05",
+      "domain": "capacity",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F2"
+        ],
+        "C02": [
+          "C01",
+          "F3"
+        ],
+        "C03": [
+          "C02",
+          "F2"
+        ],
+        "C04": [
+          "C03",
+          "F1"
+        ],
+        "C05": [
+          "C02",
+          "F4"
+        ],
+        "C06": [
+          "C02",
+          "F3"
+        ],
+        "C07": [
+          "F1"
+        ],
+        "C08": [
+          "C07",
+          "F1"
+        ],
+        "C09": [
+          "C08",
+          "F2"
+        ],
+        "C10": [
+          "C09",
+          "F3"
+        ],
+        "C11": [
+          "C10",
+          "F4"
+        ],
+        "C12": [
+          "C10",
+          "F3"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C04",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "changed_value_routing": {
+        "tp": 5,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.4166666666666667,
+        "recall": 1.0,
+        "f1": 0.5882352941176471,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "capacity_06",
+      "domain": "capacity",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F2"
+        ],
+        "C02": [
+          "C01",
+          "F3"
+        ],
+        "C03": [
+          "C02",
+          "F2"
+        ],
+        "C04": [
+          "C03",
+          "F1"
+        ],
+        "C05": [
+          "C02",
+          "F4"
+        ],
+        "C06": [
+          "C02",
+          "F3"
+        ],
+        "C07": [
+          "F1"
+        ],
+        "C08": [
+          "C07",
+          "F1"
+        ],
+        "C09": [
+          "C08",
+          "F2"
+        ],
+        "C10": [
+          "C09",
+          "F3"
+        ],
+        "C11": [
+          "C10",
+          "F4"
+        ],
+        "C12": [
+          "C10",
+          "F3"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 9,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1": 0.9473684210526316,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "pricing_01",
+      "domain": "pricing",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F3"
+        ],
+        "C02": [
+          "C01",
+          "F4"
+        ],
+        "C03": [
+          "C01",
+          "C02"
+        ],
+        "C04": [
+          "F2",
+          "F3"
+        ],
+        "C05": [
+          "C03",
+          "C04"
+        ],
+        "C06": [
+          "C03",
+          "C05"
+        ],
+        "C07": [
+          "C03",
+          "F3"
+        ],
+        "C08": [
+          "C07",
+          "F2"
+        ],
+        "C09": [
+          "F2",
+          "F4"
+        ],
+        "C10": [
+          "C01",
+          "C04"
+        ],
+        "C11": [
+          "C01",
+          "C10"
+        ],
+        "C12": [
+          "C05"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 9,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1": 0.9473684210526316,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "pricing_02",
+      "domain": "pricing",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F3"
+        ],
+        "C02": [
+          "C01",
+          "F4"
+        ],
+        "C03": [
+          "C01",
+          "C02"
+        ],
+        "C04": [
+          "F2",
+          "F3"
+        ],
+        "C05": [
+          "C03",
+          "C04"
+        ],
+        "C06": [
+          "C03",
+          "C05"
+        ],
+        "C07": [
+          "C03",
+          "F3"
+        ],
+        "C08": [
+          "C07",
+          "F2"
+        ],
+        "C09": [
+          "F2",
+          "F4"
+        ],
+        "C10": [
+          "C01",
+          "C04"
+        ],
+        "C11": [
+          "C01",
+          "C10"
+        ],
+        "C12": [
+          "C05"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 7,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.875,
+        "recall": 1.0,
+        "f1": 0.9333333333333333,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "pricing_03",
+      "domain": "pricing",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F3"
+        ],
+        "C02": [
+          "C01",
+          "F4"
+        ],
+        "C03": [
+          "C01",
+          "C02"
+        ],
+        "C04": [
+          "F2",
+          "F3"
+        ],
+        "C05": [
+          "C03",
+          "C04"
+        ],
+        "C06": [
+          "C03",
+          "C05"
+        ],
+        "C07": [
+          "C03",
+          "F3"
+        ],
+        "C08": [
+          "C07",
+          "F2"
+        ],
+        "C09": [
+          "F2",
+          "F4"
+        ],
+        "C10": [
+          "C01",
+          "C04"
+        ],
+        "C11": [
+          "C01",
+          "C10"
+        ],
+        "C12": [
+          "C05"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C10"
+      ],
+      "changed_value_routing": {
+        "tp": 6,
+        "fp": 5,
+        "fn": 0,
+        "precision": 0.5454545454545454,
+        "recall": 1.0,
+        "f1": 0.7058823529411764,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "pricing_04",
+      "domain": "pricing",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F3"
+        ],
+        "C02": [
+          "C01",
+          "F4"
+        ],
+        "C03": [
+          "C01",
+          "C02"
+        ],
+        "C04": [
+          "F2",
+          "F3"
+        ],
+        "C05": [
+          "C03",
+          "C04"
+        ],
+        "C06": [
+          "C03",
+          "C05"
+        ],
+        "C07": [
+          "C03",
+          "F3"
+        ],
+        "C08": [
+          "C07",
+          "F2"
+        ],
+        "C09": [
+          "F2",
+          "F4"
+        ],
+        "C10": [
+          "C01",
+          "C04"
+        ],
+        "C11": [
+          "C01",
+          "C10"
+        ],
+        "C12": [
+          "C05"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "changed_value_routing": {
+        "tp": 7,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.875,
+        "recall": 1.0,
+        "f1": 0.9333333333333333,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "pricing_05",
+      "domain": "pricing",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F3"
+        ],
+        "C02": [
+          "C01",
+          "F4"
+        ],
+        "C03": [
+          "C01",
+          "C02"
+        ],
+        "C04": [
+          "F2",
+          "F3"
+        ],
+        "C05": [
+          "C03",
+          "C04"
+        ],
+        "C06": [
+          "C03",
+          "C05"
+        ],
+        "C07": [
+          "C03",
+          "F3"
+        ],
+        "C08": [
+          "C07",
+          "F2"
+        ],
+        "C09": [
+          "F2",
+          "F4"
+        ],
+        "C10": [
+          "C01",
+          "C04"
+        ],
+        "C11": [
+          "C01",
+          "C10"
+        ],
+        "C12": [
+          "C05"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 9,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1": 0.9473684210526316,
+        "exact": false
+      }
+    },
+    {
+      "case_id": "pricing_06",
+      "domain": "pricing",
+      "status": "valid",
+      "schema_errors": [],
+      "dependencies": {
+        "C01": [
+          "F1",
+          "F3"
+        ],
+        "C02": [
+          "C01",
+          "F4"
+        ],
+        "C03": [
+          "C01",
+          "C02"
+        ],
+        "C04": [
+          "F2",
+          "F3"
+        ],
+        "C05": [
+          "C03",
+          "C04"
+        ],
+        "C06": [
+          "C03",
+          "C05"
+        ],
+        "C07": [
+          "C03",
+          "F3"
+        ],
+        "C08": [
+          "C07",
+          "F2"
+        ],
+        "C09": [
+          "F2",
+          "F4"
+        ],
+        "C10": [
+          "C01",
+          "C04"
+        ],
+        "C11": [
+          "C01",
+          "C10"
+        ],
+        "C12": [
+          "C05"
+        ]
+      },
+      "edges": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact": true
+      },
+      "wrong_edges": [],
+      "missing_edges": [],
+      "routed_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "exact_affected_ids": [
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "changed_value_routing": {
+        "tp": 7,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.875,
+        "recall": 1.0,
+        "f1": 0.9333333333333333,
+        "exact": false
+      }
+    }
+  ],
+  "limitations": [
+    "Natural model dependency extraction errors on authored synthetic task contracts; not real-world business cases or full-agent evaluation.",
+    "Reachability can conservatively overselect mathematically unchanged claims, including ratios and bottleneck branches.",
+    "No provider or model success is implied by this scorer. Missing and invalid responses remain in the denominator. Numeric-only patching structurally preserves human notes; it does not test open-ended preservation."
+  ]
+}
